@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import logo from "../assets/ramen.png";
 import ethLogo from "../assets/eth.svg";
 import otherIcon from "../assets/cicrle.svg";
+import { AppContext } from "../store/index";
 const Menu = () => {
+    const context = useContext(AppContext);
     const [toggleState, setToggleState] = useState(1);
-
+    const [ethAddress, setEthAddress] = useState("");
     const toggleTab = (index: number) => {
         setToggleState(index);
+    };
+
+    const connectWallet = () => {
+        setEthAddress(context.mockWallet.assets[0].publicKey);
+        console.log(ethAddress);
     };
     const getActiveClass = (index: number, className: string) => (toggleState === index ? className : "");
 
@@ -35,9 +42,15 @@ const Menu = () => {
                     </button>
                 </div>
                 <div className="wallet">
-                    <button>
-                        <p>Connect wallet</p>
-                    </button>
+                    {ethAddress ? (
+                        <button onClick={connectWallet} className="connected">
+                            <p>{ethAddress}</p>
+                        </button>
+                    ) : (
+                        <button onClick={connectWallet} className="not-connect">
+                            <p>Connect wallet</p>
+                        </button>
+                    )}
                 </div>
                 <div className="other">
                     <img src={otherIcon} alt="other" />

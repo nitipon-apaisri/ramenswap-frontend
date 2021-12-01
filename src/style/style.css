@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
-.menu-content, body .App .container .menu-bar .menu-actions .other, body .App .container .menu-bar .menu-actions .wallet button, body .App .container .menu-bar .menu-actions .network button, body .App .container .menu-bar .menu-options {
+.menu-content, body .App .container .menu-bar .menu-actions .other, body .App .container .menu-bar .menu-actions .network button, body .App .container .menu-bar .menu-options, .menu-button-default, body .App .container .menu-bar .menu-actions .wallet button.connected, body .App .container .menu-bar .menu-actions .wallet button.not-connect {
   box-sizing: border-box;
   border-radius: 0.75rem;
   background-color: white;
@@ -30,6 +30,12 @@ body .App .container .contents .swap-contents .swap-inputs .destinationToken .ma
 body .App .container .contents .swap-contents .swap-inputs .originToken .main-content input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.menu-button-default, body .App .container .menu-bar .menu-actions .wallet button.connected, body .App .container .menu-bar .menu-actions .wallet button.not-connect {
+  cursor: pointer;
+  margin-right: 8px;
+  padding: 10px 16px;
 }
 
 .tokenInput, body .App .container .contents .swap-contents .swap-inputs .destinationToken, body .App .container .contents .swap-contents .swap-inputs .originToken {
@@ -133,16 +139,23 @@ body .App .container .menu-bar .menu-actions .network button img {
   margin-right: 8px;
   width: 1.5rem;
 }
-body .App .container .menu-bar .menu-actions .wallet button {
-  cursor: pointer;
-  margin-right: 8px;
+body .App .container .menu-bar .menu-actions .wallet button.not-connect {
   color: #ff9b04;
   background-color: #ffdba4;
-  padding: 10px 16px;
 }
-body .App .container .menu-bar .menu-actions .wallet button:hover {
-  color: #ff9b04;
-  background-color: #ffdba4;
+body .App .container .menu-bar .menu-actions .wallet button.not-connect:hover {
+  color: #ff9900;
+  background-color: #fdce87;
+  transition-duration: 200ms;
+}
+body .App .container .menu-bar .menu-actions .wallet button.connected {
+  color: #000000;
+  background-color: #ffffff;
+}
+body .App .container .menu-bar .menu-actions .wallet button.connected:hover {
+  color: #ff9900;
+  background-color: #fdce87;
+  transition-duration: 200ms;
 }
 body .App .container .menu-bar .menu-actions .other {
   width: 48px;

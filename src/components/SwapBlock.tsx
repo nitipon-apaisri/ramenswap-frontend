@@ -18,6 +18,7 @@ const Swap = () => {
     const [originTokenState, setOriginTokenState] = useState(0);
     const setOriginTokenInputState = (value: any) => {
         setOriginTokenState(value);
+        console.log(originTokenState);
     };
     return (
         <div className="swap-contents">

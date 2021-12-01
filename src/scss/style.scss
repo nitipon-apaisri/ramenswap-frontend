@@ -68,17 +68,25 @@ body {
                         }
                     }
                     .wallet {
-                        button {
-                            cursor: pointer;
-                            margin-right: 8px;
-                            @extend .menu-content;
+                        button.not-connect {
+                            @extend .menu-button-default;
                             color: $strong-orange;
                             background-color: $soft-orange;
-                            padding: 10px 16px;
                         }
-                        button:hover {
-                            color: $strong-orange;
-                            background-color: $soft-orange;
+                        button.not-connect:hover {
+                            color: $strong-orange-hover;
+                            background-color: $soft-orange-hover;
+                            transition-duration: 200ms;
+                        }
+                        button.connected {
+                            @extend .menu-button-default;
+                            color: #000000;
+                            background-color: #ffffff;
+                        }
+                        button.connected:hover {
+                            color: $strong-orange-hover;
+                            background-color: $soft-orange-hover;
+                            transition-duration: 200ms;
                         }
                     }
                     .other {

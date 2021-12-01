@@ -31,7 +31,12 @@
         margin: 0;
     }
 }
-
+.menu-button-default {
+    cursor: pointer;
+    margin-right: 8px;
+    @extend .menu-content;
+    padding: 10px 16px;
+}
 //token-input
 .tokenInput {
     margin: 0 0 6px 0;
