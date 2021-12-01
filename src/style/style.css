@@ -109,12 +109,12 @@ body .App .container .contents .swap-contents {
   width: 100%;
   border-radius: 24px;
   background-color: white;
-  padding: 1rem;
+  padding: 24px;
   margin: auto;
   z-index: 1;
 }
 body .App .container .contents .swap-contents .content-header {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 body .App .container .contents .swap-contents .content-header h4 {
   font-weight: 500;
