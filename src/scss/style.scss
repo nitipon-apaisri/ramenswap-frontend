@@ -56,8 +56,9 @@ body {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    width: 320px;
+                    max-width: 320px;
                     .network {
-                        margin-right: 8px;
                         button {
                             @extend .menu-content;
                             padding: 0.5rem;
@@ -116,7 +117,7 @@ body {
                     }
                     .swap-inputs {
                         position: relative;
-                        .originToken {
+                        .origin-token {
                             @extend .tokenInput;
                         }
                         .tranfer {
@@ -167,17 +168,31 @@ body {
                                 }
                             }
                         }
+                        .origin-token-balance {
+                            margin-top: 12px;
+                            p {
+                                font-weight: 400;
+                                color: #8d8d8d;
+                                font-size: smaller;
+                                font-family: "Roboto Mono", monospace;
+                            }
+                        }
                     }
                     .swap-footer {
-                        button {
-                            width: 100%;
-                            border-radius: 12px;
-                            padding: 16px;
+                        button.connected {
+                            @extend .swap-button-default;
                             background-color: $soft-orange;
                             color: $strong-orange;
-                            border: none;
-                            cursor: pointer;
                             p {
+                                font-size: 1rem;
+                                text-align: center;
+                            }
+                        }
+                        button.enter-an-amount {
+                            @extend .swap-button-default;
+                            cursor: default;
+                            p {
+                                color: #525252;
                                 font-size: 1rem;
                                 text-align: center;
                             }

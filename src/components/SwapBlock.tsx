@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import CaretDown from "../assets/CaretDown.png";
 import CaretDownWhite from "../assets/CaretDownWhite.svg";
 import ArrowDown from "../assets/ArrowDown.svg";
+import { AppContext } from "../store/index";
 const assets: any = [
     {
         symbol: "ETH",
@@ -15,18 +16,35 @@ const assets: any = [
 ];
 
 const Swap = () => {
+    const context = useContext(AppContext);
     const [originTokenState, setOriginTokenState] = useState(0);
+    const [originTokenBalance, setOriginTokenBalance] = useState(0);
+    const [walletConnectState, setWalletConnectState] = useState(false);
+    const [originTokenSymbol, setOriginTokenSymbol] = useState("");
     const setOriginTokenInputState = (value: any) => {
         setOriginTokenState(value);
-        console.log(originTokenState);
+        console.log(value);
     };
+    const connectWallet = () => {
+        context.changeWalletConnectState(true);
+        context.changeOriginTokenSymbol(context.mockWallet.assets[0].symbol);
+        context.changeOriginTokenBalance(context.mockWallet.assets[0].balance);
+    };
+    const swap = () => {
+        console.log("Swap");
+    };
+    useEffect(() => {
+        setOriginTokenBalance(context.originTokenBalance);
+        setWalletConnectState(context.walletConnectState);
+        setOriginTokenSymbol(context.originTokenSymbol);
+    }, [context.originTokenBalance, context.walletConnectState, context.originTokenSymbol]);
     return (
         <div className="swap-contents">
             <div className="content-header">
                 <h4>Swap</h4>
             </div>
             <div className="swap-inputs">
-                <div className="originToken">
+                <div className="origin-token">
                     <div className="main-content">
                         <div className="tokenSelect">
                             <button>
@@ -38,8 +56,18 @@ const Swap = () => {
                         <input
                             type="number"
                             placeholder="0"
+                            min="0"
                             onChange={(e) => setOriginTokenInputState(e.target.value)}
                         />
+                    </div>
+                    <div className="origin-token-balance">
+                        {walletConnectState ? (
+                            <p>
+                                Balance: {originTokenBalance} {originTokenSymbol}
+                            </p>
+                        ) : (
+                            <p></p>
+                        )}
                     </div>
                 </div>
                 <div className="tranfer">
@@ -65,15 +93,26 @@ const Swap = () => {
                         <input
                             type="number"
                             placeholder="0"
+                            min="0"
                             onChange={(e) => setOriginTokenInputState(e.target.value)}
                         />
                     </div>
                 </div>
             </div>
             <div className="swap-footer">
-                <button>
-                    <p>Connect wallet</p>
-                </button>
+                {walletConnectState ? (
+                    <button onClick={originTokenBalance <= 0 ? connectWallet : swap} className="enter-an-amount">
+                        {originTokenBalance <= originTokenState ? (
+                            <p>Insufficent token balance</p>
+                        ) : (
+                            <p>Enter an amount</p>
+                        )}
+                    </button>
+                ) : (
+                    <button disabled className="connected">
+                        <p>Connect wallet</p>
+                    </button>
+                )}
             </div>
         </div>
     );

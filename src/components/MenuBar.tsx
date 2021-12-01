@@ -13,7 +13,9 @@ const Menu = () => {
 
     const connectWallet = () => {
         setEthAddress(context.mockWallet.assets[0].publicKey);
-        console.log(ethAddress);
+        context.changeWalletConnectState(true);
+        context.changeOriginTokenSymbol(context.mockWallet.assets[0].symbol);
+        context.changeOriginTokenBalance(context.mockWallet.assets[0].balance);
     };
     const getActiveClass = (index: number, className: string) => (toggleState === index ? className : "");
 
