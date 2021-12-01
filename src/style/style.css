@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 body {
+  font-family: "Rubik", sans-serif;
   margin: 0;
 }
-body h1, body h2, body h3, body h4, body h5, body h6 {
+body h1, body h2, body h3, body h4, body h5, body h6, body p {
   margin: 0;
 }
 body .App {
@@ -18,9 +19,11 @@ body .App .container .menu-bar {
   display: flex;
   justify-content: space-between;
   font-weight: 500;
+  flex-flow: row wrap;
 }
 body .App .container .menu-bar .banner {
   display: flex;
+  width: 320px;
   align-items: center;
 }
 body .App .container .menu-bar .banner img {
@@ -29,24 +32,37 @@ body .App .container .menu-bar .banner img {
 body .App .container .menu-bar .banner h3 {
   font-style: italic;
 }
-body .App .container .menu-bar .menu-content, body .App .container .menu-bar .menu-actions .other, body .App .container .menu-bar .menu-actions .wallet, body .App .container .menu-bar .menu-actions .network, body .App .container .menu-bar .menu-options {
+body .App .container .menu-bar .menu-content, body .App .container .menu-bar .menu-actions .other, body .App .container .menu-bar .menu-actions .wallet button, body .App .container .menu-bar .menu-actions .network button, body .App .container .menu-bar .menu-options {
   box-sizing: border-box;
   border-radius: 0.75rem;
   background-color: white;
   height: 42px;
-  padding: 3px 3.5px;
+  max-height: 42px;
   letter-spacing: 0.05rem;
   display: flex;
   justify-content: space-between;
+  border: none;
   align-items: center;
+}
+body .App .container .menu-bar .menu-options {
+  align-items: stretch;
+  padding: 4px;
 }
 body .App .container .menu-bar .menu-options .active {
   border-radius: 0.7rem;
   background-color: #f2f2f2;
+  transition-duration: 200ms;
 }
-body .App .container .menu-bar .menu-options .option {
-  padding: 8px 12px;
+body .App .container .menu-bar .menu-options button {
+  box-sizing: border-box;
+  border: none;
+  padding: 10px 12px;
   cursor: pointer;
+  background-color: transparent;
+}
+body .App .container .menu-bar .menu-options button p {
+  letter-spacing: 0.03rem;
+  font-weight: 600;
 }
 body .App .container .menu-bar .menu-actions {
   display: flex;
@@ -55,21 +71,169 @@ body .App .container .menu-bar .menu-actions {
 }
 body .App .container .menu-bar .menu-actions .network {
   margin-right: 8px;
+}
+body .App .container .menu-bar .menu-actions .network button {
   padding: 0.5rem;
 }
-body .App .container .menu-bar .menu-actions .network img {
+body .App .container .menu-bar .menu-actions .network button img {
   margin-right: 8px;
   width: 1.5rem;
 }
-body .App .container .menu-bar .menu-actions .wallet {
+body .App .container .menu-bar .menu-actions .network button p {
+  font-weight: 600;
+}
+body .App .container .menu-bar .menu-actions .wallet button {
+  cursor: pointer;
   margin-right: 8px;
   color: #ff9b04;
   background-color: #ffdaa3;
   padding: 10px 16px;
 }
+body .App .container .menu-bar .menu-actions .wallet button p {
+  font-weight: 600;
+}
+body .App .container .menu-bar .menu-actions .wallet button:hover {
+  color: #fc9700;
+  background-color: #ffcf88;
+}
 body .App .container .menu-bar .menu-actions .other {
   width: 48px;
   justify-content: center;
+}
+body .App .container .contents {
+  padding: 24px;
+}
+body .App .container .contents .swap-contents {
+  box-shadow: rgba(0, 0, 0, 0.005) 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 4px 8px, rgba(0, 0, 0, 0.02) 0px 16px 24px, rgba(0, 0, 0, 0.005) 0px 24px 32px;
+  max-width: 480px;
+  width: 100%;
+  border-radius: 24px;
+  background-color: white;
+  padding: 1rem;
+  margin: auto;
+  z-index: 1;
+}
+body .App .container .contents .swap-contents .content-header {
+  margin-bottom: 16px;
+}
+body .App .container .contents .swap-contents .content-header h4 {
+  font-weight: 500;
+}
+body .App .container .contents .swap-contents .swap-inputs {
+  position: relative;
+}
+body .App .container .contents .swap-contents .swap-inputs .tokenInput, body .App .container .contents .swap-contents .swap-inputs .destinationToken, body .App .container .contents .swap-contents .swap-inputs .originToken {
+  margin: 0 0 6px 0;
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f7f8fa;
+  border: 1px solid #ebebeb;
+}
+body .App .container .contents .swap-contents .swap-inputs .tokenInput .main-content, body .App .container .contents .swap-contents .swap-inputs .destinationToken .main-content, body .App .container .contents .swap-contents .swap-inputs .originToken .main-content {
+  display: flex;
+  justify-content: space-between;
+}
+body .App .container .contents .swap-contents .swap-inputs .tokenInput .main-content input, body .App .container .contents .swap-contents .swap-inputs .destinationToken .main-content input, body .App .container .contents .swap-contents .swap-inputs .originToken .main-content input {
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.4rem;
+  text-align: right;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+body .App .container .contents .swap-contents .swap-inputs .tokenInput .main-content input::-webkit-outer-spin-button, body .App .container .contents .swap-contents .swap-inputs .destinationToken .main-content input::-webkit-outer-spin-button, body .App .container .contents .swap-contents .swap-inputs .originToken .main-content input::-webkit-outer-spin-button,
+body .App .container .contents .swap-contents .swap-inputs .tokenInput .main-content input::-webkit-inner-spin-button,
+body .App .container .contents .swap-contents .swap-inputs .destinationToken .main-content input::-webkit-inner-spin-button,
+body .App .container .contents .swap-contents .swap-inputs .originToken .main-content input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+body .App .container .contents .swap-contents .swap-inputs .tokenInput .main-content .tokenSelect button, body .App .container .contents .swap-contents .swap-inputs .destinationToken .main-content .tokenSelect button, body .App .container .contents .swap-contents .swap-inputs .originToken .main-content .tokenSelect button {
+  border-radius: 12px;
+  display: flex;
+  padding: 10px 12px;
+  align-items: center;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 10px;
+}
+body .App .container .contents .swap-contents .swap-inputs .tokenInput .main-content .tokenSelect img.tokenIcon, body .App .container .contents .swap-contents .swap-inputs .destinationToken .main-content .tokenSelect img.tokenIcon, body .App .container .contents .swap-contents .swap-inputs .originToken .main-content .tokenSelect img.tokenIcon {
+  width: 22px;
+  margin-right: 8px;
+}
+body .App .container .contents .swap-contents .swap-inputs .tokenInput .main-content .tokenSelect p, body .App .container .contents .swap-contents .swap-inputs .destinationToken .main-content .tokenSelect p, body .App .container .contents .swap-contents .swap-inputs .originToken .main-content .tokenSelect p {
+  letter-spacing: 0.05rem;
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 16px;
+}
+body .App .container .contents .swap-contents .swap-inputs .tranfer {
+  position: absolute;
+  margin-top: -20px;
+  right: 45%;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+}
+body .App .container .contents .swap-contents .swap-inputs .tranfer .tranfer-icon {
+  width: 16px;
+  padding: 4px;
+  border-radius: 6px;
+  background-color: #f7f8fa;
+  display: flex;
+  justify-content: center;
+}
+body .App .container .contents .swap-contents .swap-inputs .tranfer .tranfer-icon img {
+  align-self: center;
+  width: 8px;
+}
+body .App .container .contents .swap-contents .swap-inputs .destinationToken .choose-a-token {
+  width: 100%;
+}
+body .App .container .contents .swap-contents .swap-inputs .destinationToken .choose-a-token button {
+  border-radius: 12px;
+  display: flex;
+  padding: 10px 12px;
+  align-items: center;
+  background-color: #ff9b04;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 10px;
+}
+body .App .container .contents .swap-contents .swap-inputs .destinationToken .choose-a-token button p {
+  letter-spacing: 0.005rem;
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 16px;
+}
+body .App .container .contents .swap-contents .swap-inputs .destinationToken .choose-a-token button img {
+  width: 16px;
+}
+body .App .container .contents .swap-contents .swap-footer button {
+  width: 100%;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: #ffdaa3;
+  color: #ff9b04;
+  border: none;
+  cursor: pointer;
+}
+body .App .container .contents .swap-contents .swap-footer button p {
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
