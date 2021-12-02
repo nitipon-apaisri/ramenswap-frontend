@@ -3,6 +3,7 @@ import { AppContext } from "../../store/index";
 const ConnectWalletModal = () => {
     const context = useContext(AppContext);
     const connectWallet = () => {
+        context.changeOriginTokenBalance(context.mockWallet.assets[context.originToken].balance);
         context.changeWalletConnectState(true);
         context.toggleConnectWallet();
     };
