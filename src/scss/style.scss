@@ -99,6 +99,7 @@ body {
                 }
             }
             .contents {
+                margin-top: 64px;
                 .swap-contents {
                     //prettier-ignore
                     box-shadow: rgb(0 0 0 / 0.5%) 0px 0px 1px, rgb(0 0 0 / 2%) 0px 4px 8px, rgb(0 0 0 / 2%) 0px 16px 24px, rgb(0 0 0 / 0.5%) 0px 24px 32px;
@@ -144,7 +145,7 @@ body {
                                 }
                             }
                         }
-                        .destinationToken {
+                        .destination-token {
                             @extend .tokenInput;
                             .choose-a-token {
                                 width: 100%;
@@ -178,10 +179,10 @@ body {
                                 color: #8d8d8d;
                                 font-size: smaller;
                             }
-                            .origin-token-balance {
+                            .balance {
                                 margin-top: 12px;
                             }
-                            .tokenToFiat {
+                            .token-to-fiat {
                                 margin-top: 12px;
                             }
                         }
@@ -236,29 +237,7 @@ body {
                         border: 2px solid #000000;
                     }
                     .connect-wallet-modal {
-                        border-radius: 32px;
-                        width: 640px;
-                        background-color: white;
-                        max-height: 400px;
-                        padding: 40px;
-                        box-sizing: border-box;
-                        margin-top: -320px;
-                        .modal-contents {
-                            .title {
-                                display: flex;
-                                justify-content: space-between;
-                                button {
-                                    cursor: pointer;
-                                    border: none;
-                                    padding: 8px 10px;
-                                    border-radius: 4px;
-                                }
-                                button:hover {
-                                    background-color: rgb(139, 139, 139);
-                                    transition-duration: 200ms;
-                                }
-                            }
-                        }
+                        @extend .modal-container;
                         .connect-wallet-buttons {
                             display: flex;
                             flex-direction: column;
@@ -289,6 +268,39 @@ body {
                                 background-color: $soft-orange-hover;
                                 color: $strong-orange-hover;
                                 transition-duration: 200ms;
+                            }
+                        }
+                    }
+                    .support-token-modal {
+                        @extend .modal-container;
+                        width: 480px;
+                        .modal-contents {
+                            .token-list {
+                                .token {
+                                    border-radius: 16px;
+                                    display: flex;
+                                    align-items: center;
+                                    background-color: #333333;
+                                    padding: 8px 16px;
+                                    box-sizing: border-box;
+                                    margin: 8px 0;
+                                    cursor: pointer;
+                                    .token-icon {
+                                        padding: 4px;
+                                        margin-right: 16px;
+                                        img {
+                                            border-radius: 100%;
+                                            width: 32px;
+                                        }
+                                    }
+                                    p {
+                                        color: white;
+                                    }
+                                }
+                                .token:hover {
+                                    background-color: #494949;
+                                    transition-duration: 200ms;
+                                }
                             }
                         }
                     }

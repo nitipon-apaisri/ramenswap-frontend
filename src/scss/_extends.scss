@@ -48,6 +48,30 @@
     border: none;
     cursor: pointer;
 }
+.modal-container {
+    border-radius: 32px;
+    width: 640px;
+    background-color: white;
+    padding: 40px;
+    box-sizing: border-box;
+    margin-top: -320px;
+    .modal-contents {
+        .title {
+            display: flex;
+            justify-content: space-between;
+            button {
+                cursor: pointer;
+                border: none;
+                padding: 8px 10px;
+                border-radius: 4px;
+            }
+            button:hover {
+                background-color: rgb(139, 139, 139);
+                transition-duration: 200ms;
+            }
+        }
+    }
+}
 //token-input
 .tokenInput {
     margin: 0 0 6px 0;

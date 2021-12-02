@@ -22,6 +22,8 @@ const Swap = () => {
     const [walletConnectState, setWalletConnectState] = useState(false);
     const [originTokenSymbol, setOriginTokenSymbol] = useState("");
     const [insufficentState, setInsufficentState] = useState("");
+    const [selectTokenState, setSelectTokenState] = useState(Number);
+    const [tokenIndex, setTokenIndex] = useState(Number);
     const setOriginTokenInputState = (value: any) => {
         setOriginTokenState(Number(value));
     };
@@ -31,6 +33,9 @@ const Swap = () => {
     const swap = () => {
         console.log("Swap");
     };
+    const toggleSupportTokens = () => {
+        context.toggleSupportTokens();
+    };
     useEffect(() => {
         if (originTokenBalance < originTokenState) {
             setInsufficentState("Insufficent");
@@ -39,6 +44,8 @@ const Swap = () => {
         } else {
             setInsufficentState("Swap");
         }
+        setTokenIndex(context.tokenSelectIndex);
+        setSelectTokenState(context.selectTokenState);
         setOriginTokenBalance(context.originTokenBalance);
         setWalletConnectState(context.walletConnectState);
         setOriginTokenSymbol(context.originTokenSymbol);
@@ -46,6 +53,8 @@ const Swap = () => {
         context.originTokenBalance,
         context.walletConnectState,
         context.originTokenSymbol,
+        context.selectTokenState,
+        context.tokenSelectIndex,
         originTokenState,
         originTokenBalance,
     ]);
@@ -60,7 +69,7 @@ const Swap = () => {
                         <div className="tokenSelect">
                             <button>
                                 <img src={assets[0].iconUrl} alt="token" className="tokenIcon" />
-                                <p>ETH</p>
+                                <p>{assets[0].symbol}</p>
                                 <img src={CaretDown} alt="caret-down" className="caretDown" />
                             </button>
                         </div>
@@ -72,7 +81,7 @@ const Swap = () => {
                         />
                     </div>
                     <div className="swap-input-footer">
-                        <div className="origin-token-balance">
+                        <div className="balance">
                             {walletConnectState ? (
                                 <p>
                                     Balance: {originTokenBalance} {originTokenSymbol}
@@ -81,7 +90,7 @@ const Swap = () => {
                                 <p></p>
                             )}
                         </div>
-                        <div className="tokenToFiat">
+                        <div className="token-to-fiat">
                             {originTokenState !== 0 ? <p>≈ {`$${originTokenState * 4600}`}</p> : <p></p>}
                         </div>
                     </div>
@@ -91,27 +100,42 @@ const Swap = () => {
                         <img src={ArrowDown} alt="tranfer-icon" />
                     </div>
                 </div>
-                <div className="destinationToken">
+                <div className="destination-token">
                     <div className="main-content">
-                        {/* <div className="tokenSelect">
-                            <button>
-                                <img src={assets[0].iconUrl} alt="token" className="tokenIcon" />
-                                <p>ETH</p>
-                                <img src={CaretDown} alt="caret-down" className="caretDown" />
-                            </button>
-                        </div> */}
-                        <div className="choose-a-token">
-                            <button>
-                                <p>Select a token</p>
-                                <img src={CaretDownWhite} alt="caret-down" className="caretDown" />
-                            </button>
-                        </div>
+                        {selectTokenState ? (
+                            <div className="tokenSelect">
+                                <button onClick={context.toggleSupportTokens}>
+                                    <img
+                                        src={`${context.supportTokens[tokenIndex].iconUrl}`}
+                                        alt="token"
+                                        className="tokenIcon"
+                                    />
+                                    <p>{context.supportTokens[tokenIndex].symbol}</p>
+                                    <img src={CaretDown} alt="caret-down" className="caretDown" />
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="choose-a-token">
+                                <button onClick={toggleSupportTokens}>
+                                    <p>Select a token</p>
+                                    <img src={CaretDownWhite} alt="caret-down" className="caretDown" />
+                                </button>
+                            </div>
+                        )}
                         <input
                             type="number"
                             placeholder="0"
                             min="0"
                             onChange={(e) => setOriginTokenInputState(e.target.value)}
                         />
+                    </div>
+                    <div className="swap-input-footer">
+                        <div className="balance">
+                            <p></p>
+                        </div>
+                        <div className="token-to-fait">
+                            <p></p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -25,16 +25,39 @@ const wallet = [
     },
 ];
 
+const supportTokens = [
+    {
+        symbol: "UNI",
+        name: "Uniswap",
+        color: "#ff007a",
+        iconUrl: "https://cdn.coinranking.com/1heSvUgtl/uniswap-v2.svg?size=48x48",
+        contractAddress: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    },
+    {
+        symbol: "1INCH",
+        name: "1inch Token",
+        color: "#ed6758",
+        iconUrl: "https://cdn.coinranking.com/OypO2Qln6/1inch_token.png",
+        contractAddress: "0x111111111117dc0aa78b770fa6a738034120c302",
+    },
+];
+
 type ContextProps = {
     mockWallet: any;
+    supportTokens: any;
     originTokenBalance: any;
     walletConnectState: any;
     originTokenSymbol: any;
+    selectTokenState: any;
+    tokenSelectIndex: any;
     connectWalletModalState: any;
+    supportTokenModalState: any;
     changeOriginTokenBalance: any;
     changeWalletConnectState: any;
     changeOriginTokenSymbol: any;
+    changeSelectToken: any;
     toggleConnectWallet: any;
+    toggleSupportTokens: any;
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
@@ -43,6 +66,9 @@ const AppProvider = (props: any) => {
     const [walletConnectState, setWalletConnectState] = useState(false);
     const [originTokenSymbol, setOriginTokenSymbol] = useState("");
     const [connectWalletModalState, setConnectWalletModalState] = useState(false);
+    const [supportTokenModalState, setSupportTokenModalState] = useState(false);
+    const [selectTokenState, setSelectTokenState] = useState(false);
+    const [tokenSelectIndex, setTokenSelectIndex] = useState(Number);
     const changeOriginTokenBalance = (balance: number) => {
         setOriginTokenBalance(balance);
     };
@@ -55,20 +81,33 @@ const AppProvider = (props: any) => {
     const toggleConnectWallet = () => {
         setConnectWalletModalState(!connectWalletModalState);
     };
+    const toggleSupportTokens = () => {
+        setSupportTokenModalState(!supportTokenModalState);
+    };
+    const changeSelectToken = (index: number) => {
+        setTokenSelectIndex(index);
+        setSelectTokenState(true);
+    };
     const mockWallet: object = wallet[0];
     // const [state, setState] = useState('s')
     return (
         <AppContext.Provider
             value={{
                 mockWallet,
+                supportTokens,
                 originTokenBalance,
                 walletConnectState,
                 originTokenSymbol,
                 connectWalletModalState,
+                supportTokenModalState,
+                selectTokenState,
+                tokenSelectIndex,
                 changeWalletConnectState,
                 changeOriginTokenBalance,
                 changeOriginTokenSymbol,
+                changeSelectToken,
                 toggleConnectWallet,
+                toggleSupportTokens,
             }}
         >
             {props.children}
