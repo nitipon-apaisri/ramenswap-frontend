@@ -42,7 +42,7 @@ body .App .container .contents .swap-contents .swap-inputs .origin-token .main-c
   padding: 10px 16px;
 }
 
-.swap-button-default, body .App .container .contents .swap-contents .swap-footer button.enter-an-amount, body .App .container .contents .swap-contents .swap-footer button.connected {
+.swap-button-default, body .App .container .contents .swap-contents .swap-footer button.swap, body .App .container .contents .swap-contents .swap-footer button.enter-an-amount, body .App .container .contents .swap-contents .swap-footer button.connected {
   width: 100%;
   border-radius: 12px;
   padding: 16px;
@@ -239,14 +239,22 @@ body .App .container .contents .swap-contents .swap-inputs .destinationToken .ch
 body .App .container .contents .swap-contents .swap-inputs .destinationToken .choose-a-token button img {
   width: 16px;
 }
-body .App .container .contents .swap-contents .swap-inputs .origin-token-balance {
-  margin-top: 12px;
+body .App .container .contents .swap-contents .swap-inputs .swap-input-footer {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Roboto Mono", monospace;
+  align-items: center;
 }
-body .App .container .contents .swap-contents .swap-inputs .origin-token-balance p {
+body .App .container .contents .swap-contents .swap-inputs .swap-input-footer p {
   font-weight: 400;
   color: #8d8d8d;
   font-size: smaller;
-  font-family: "Roboto Mono", monospace;
+}
+body .App .container .contents .swap-contents .swap-inputs .swap-input-footer .origin-token-balance {
+  margin-top: 12px;
+}
+body .App .container .contents .swap-contents .swap-inputs .swap-input-footer .tokenToFiat {
+  margin-top: 12px;
 }
 body .App .container .contents .swap-contents .swap-footer button.connected {
   background-color: #ffdba4;
@@ -261,6 +269,16 @@ body .App .container .contents .swap-contents .swap-footer button.enter-an-amoun
 }
 body .App .container .contents .swap-contents .swap-footer button.enter-an-amount p {
   color: #525252;
+  font-size: 1rem;
+  text-align: center;
+}
+body .App .container .contents .swap-contents .swap-footer button.swap {
+  cursor: pointer;
+  background-color: #ffdba4;
+  transition-duration: 200ms;
+}
+body .App .container .contents .swap-contents .swap-footer button.swap p {
+  color: #ff9b04;
   font-size: 1rem;
   text-align: center;
 }

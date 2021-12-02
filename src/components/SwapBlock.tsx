@@ -73,14 +73,23 @@ const Swap = () => {
                             onChange={(e) => setOriginTokenInputState(e.target.value)}
                         />
                     </div>
-                    <div className="origin-token-balance">
-                        {walletConnectState ? (
-                            <p>
-                                Balance: {originTokenBalance} {originTokenSymbol}
-                            </p>
-                        ) : (
-                            <p></p>
-                        )}
+                    <div className="swap-input-footer">
+                        <div className="origin-token-balance">
+                            {walletConnectState ? (
+                                <p>
+                                    Balance: {originTokenBalance} {originTokenSymbol}
+                                </p>
+                            ) : (
+                                <p></p>
+                            )}
+                        </div>
+                        <div className="tokenToFiat">
+                            {walletConnectState && originTokenState !== 0 ? (
+                                <p>≈ {`$${originTokenState * 4600}`}</p>
+                            ) : (
+                                <p></p>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <div className="tranfer">
@@ -116,7 +125,7 @@ const Swap = () => {
                 {walletConnectState ? (
                     <button
                         onClick={originTokenBalance < originTokenState ? connectWallet : swap}
-                        className="enter-an-amount"
+                        className={insufficentState === "Swap" ? "swap" : "enter-an-amount"}
                     >
                         <p>{insufficentState}</p>
                     </button>
