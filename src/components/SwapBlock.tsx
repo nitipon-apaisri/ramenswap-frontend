@@ -21,9 +21,9 @@ const Swap = () => {
     const [originTokenBalance, setOriginTokenBalance] = useState(0);
     const [walletConnectState, setWalletConnectState] = useState(false);
     const [originTokenSymbol, setOriginTokenSymbol] = useState("");
+    const [insufficentState, setInsufficentState] = useState("");
     const setOriginTokenInputState = (value: any) => {
-        setOriginTokenState(value);
-        console.log(value);
+        setOriginTokenState(Number(value));
     };
     const connectWallet = () => {
         context.changeWalletConnectState(true);
@@ -34,10 +34,23 @@ const Swap = () => {
         console.log("Swap");
     };
     useEffect(() => {
+        if (originTokenBalance < originTokenState) {
+            setInsufficentState("Insufficent");
+        } else if (originTokenState === 0 || null) {
+            setInsufficentState("Enter an amount");
+        } else {
+            setInsufficentState("Swap");
+        }
         setOriginTokenBalance(context.originTokenBalance);
         setWalletConnectState(context.walletConnectState);
         setOriginTokenSymbol(context.originTokenSymbol);
-    }, [context.originTokenBalance, context.walletConnectState, context.originTokenSymbol]);
+    }, [
+        context.originTokenBalance,
+        context.walletConnectState,
+        context.originTokenSymbol,
+        originTokenState,
+        originTokenBalance,
+    ]);
     return (
         <div className="swap-contents">
             <div className="content-header">
@@ -101,15 +114,14 @@ const Swap = () => {
             </div>
             <div className="swap-footer">
                 {walletConnectState ? (
-                    <button onClick={originTokenBalance <= 0 ? connectWallet : swap} className="enter-an-amount">
-                        {originTokenBalance <= originTokenState ? (
-                            <p>Insufficent token balance</p>
-                        ) : (
-                            <p>Enter an amount</p>
-                        )}
+                    <button
+                        onClick={originTokenBalance < originTokenState ? connectWallet : swap}
+                        className="enter-an-amount"
+                    >
+                        <p>{insufficentState}</p>
                     </button>
                 ) : (
-                    <button disabled className="connected">
+                    <button className="connected" onClick={connectWallet}>
                         <p>Connect wallet</p>
                     </button>
                 )}
