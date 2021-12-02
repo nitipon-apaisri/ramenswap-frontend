@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import logo from "../assets/ramen.png";
 import ethLogo from "../assets/eth.svg";
 import otherIcon from "../assets/cicrle.svg";
@@ -7,6 +7,7 @@ const Menu = () => {
     const context = useContext(AppContext);
     const [toggleState, setToggleState] = useState(1);
     const [ethAddress, setEthAddress] = useState("");
+
     const toggleTab = (index: number) => {
         setToggleState(index);
     };
@@ -17,6 +18,10 @@ const Menu = () => {
         context.changeOriginTokenSymbol(context.mockWallet.assets[0].symbol);
         context.changeOriginTokenBalance(context.mockWallet.assets[0].balance);
     };
+
+    useEffect(() => {
+        if (context.walletConnectState) setEthAddress(context.mockWallet.assets[0].publicKey);
+    }, [context.walletConnectState, context.mockWallet.assets]);
     const getActiveClass = (index: number, className: string) => (toggleState === index ? className : "");
 
     return (
