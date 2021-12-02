@@ -264,6 +264,11 @@ body .App .container .contents .swap-contents .swap-footer button.connected p {
   font-size: 1rem;
   text-align: center;
 }
+body .App .container .contents .swap-contents .swap-footer button.connected:hover {
+  background-color: #fdce87;
+  color: #ff9900;
+  transition-duration: 200ms;
+}
 body .App .container .contents .swap-contents .swap-footer button.enter-an-amount {
   cursor: default;
 }
@@ -304,6 +309,20 @@ body .App .container .contents .modal .connect-wallet-modal {
   box-sizing: border-box;
   margin-top: -320px;
 }
+body .App .container .contents .modal .connect-wallet-modal .modal-contents .title {
+  display: flex;
+  justify-content: space-between;
+}
+body .App .container .contents .modal .connect-wallet-modal .modal-contents .title button {
+  cursor: pointer;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+body .App .container .contents .modal .connect-wallet-modal .modal-contents .title button:hover {
+  background-color: #8b8b8b;
+  transition-duration: 200ms;
+}
 body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons {
   display: flex;
   flex-direction: column;
@@ -327,13 +346,13 @@ body .App .container .contents .modal .connect-wallet-modal .connect-wallet-butt
   background-color: #d6d6d6;
   transition-duration: 200ms;
 }
-body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons .sign-up {
-  color: #464646;
-  background-color: #b6b6b6;
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons .create {
+  background-color: #ffdba4;
+  color: #ff9b04;
 }
-body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons .sign-up:hover {
-  color: #f1f1f1;
-  background-color: #838383;
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons .create:hover {
+  background-color: #fdce87;
+  color: #ff9900;
   transition-duration: 200ms;
 }
 

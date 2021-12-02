@@ -26,9 +26,7 @@ const Swap = () => {
         setOriginTokenState(Number(value));
     };
     const connectWallet = () => {
-        context.changeWalletConnectState(true);
-        context.changeOriginTokenSymbol(context.mockWallet.assets[0].symbol);
-        context.changeOriginTokenBalance(context.mockWallet.assets[0].balance);
+        context.toggleConnectWallet();
     };
     const swap = () => {
         console.log("Swap");
@@ -84,11 +82,7 @@ const Swap = () => {
                             )}
                         </div>
                         <div className="tokenToFiat">
-                            {walletConnectState && originTokenState !== 0 ? (
-                                <p>≈ {`$${originTokenState * 4600}`}</p>
-                            ) : (
-                                <p></p>
-                            )}
+                            {originTokenState !== 0 ? <p>≈ {`$${originTokenState * 4600}`}</p> : <p></p>}
                         </div>
                     </div>
                 </div>

@@ -8,20 +8,26 @@ const ConnectWalletModal = () => {
         context.changeOriginTokenBalance(context.mockWallet.assets[0].balance);
         context.toggleConnectWallet();
     };
+    const closeModal = () => {
+        context.toggleConnectWallet();
+    };
     return (
         <div className="modal">
             <div className="connect-wallet-modal">
                 <div className="modal-contents">
                     <div className="title">
                         <h2>Connect a Wallet</h2>
-                        <hr className="modal-hr" />
+                        <button className="closeModal" onClick={closeModal}>
+                            <p>X</p>
+                        </button>
                     </div>
+                    <hr className="modal-hr" />
                     <div className="connect-wallet-buttons">
                         <button className="sign-in" onClick={connectWallet}>
                             <p>Sign In</p>
                         </button>
-                        <button className="sign-up">
-                            <p>Sign Up</p>
+                        <button className="create">
+                            <p>Create Wallet</p>
                         </button>
                     </div>
                 </div>

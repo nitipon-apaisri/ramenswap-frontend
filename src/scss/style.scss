@@ -196,6 +196,11 @@ body {
                                 text-align: center;
                             }
                         }
+                        button.connected:hover {
+                            background-color: $soft-orange-hover;
+                            color: $strong-orange-hover;
+                            transition-duration: 200ms;
+                        }
                         button.enter-an-amount {
                             @extend .swap-button-default;
                             cursor: default;
@@ -238,6 +243,22 @@ body {
                         padding: 40px;
                         box-sizing: border-box;
                         margin-top: -320px;
+                        .modal-contents {
+                            .title {
+                                display: flex;
+                                justify-content: space-between;
+                                button {
+                                    cursor: pointer;
+                                    border: none;
+                                    padding: 8px 10px;
+                                    border-radius: 4px;
+                                }
+                                button:hover {
+                                    background-color: rgb(139, 139, 139);
+                                    transition-duration: 200ms;
+                                }
+                            }
+                        }
                         .connect-wallet-buttons {
                             display: flex;
                             flex-direction: column;
@@ -260,13 +281,13 @@ body {
                                 background-color: #d6d6d6;
                                 transition-duration: 200ms;
                             }
-                            .sign-up {
-                                color: #464646;
-                                background-color: #b6b6b6;
+                            .create {
+                                background-color: $soft-orange;
+                                color: $strong-orange;
                             }
-                            .sign-up:hover {
-                                color: #f1f1f1;
-                                background-color: #838383;
+                            .create:hover {
+                                background-color: $soft-orange-hover;
+                                color: $strong-orange-hover;
                                 transition-duration: 200ms;
                             }
                         }
