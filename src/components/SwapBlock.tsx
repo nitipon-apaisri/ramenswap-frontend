@@ -15,6 +15,7 @@ const Swap = () => {
     const [selectTokenState, setSelectTokenState] = useState(Boolean);
     const [tokenIndex, setTokenIndex] = useState(Number);
     const [originToken, setOriginToken] = useState(Number);
+    const [tokenSelectIndexInWallet, setTokenInWalletIndex] = useState(Number);
     const setOriginTokenInputState = (value: any) => {
         setOriginTokenState(Number(value));
     };
@@ -41,6 +42,7 @@ const Swap = () => {
         } else {
             setInsufficentState("Swap");
         }
+        setTokenInWalletIndex(context.tokenSelectIndexInWallet);
         setOriginToken(context.originToken);
         setTokenIndex(context.tokenSelectIndex);
         setSelectTokenState(context.selectTokenState);
@@ -48,6 +50,7 @@ const Swap = () => {
         setWalletConnectState(context.walletConnectState);
         setOriginTokenSymbol(context.originTokenSymbol);
     }, [
+        context.tokenSelectIndexInWallet,
         context.originTokenBalance,
         context.walletConnectState,
         context.originTokenSymbol,
@@ -87,14 +90,15 @@ const Swap = () => {
                         <div className="balance">
                             {walletConnectState ? (
                                 <p>
-                                    Balance: {originTokenBalance} {originTokenSymbol}
+                                    Balance: {originTokenBalance} {originTokenSymbol}{" "}
+                                    {context.mockWallet.assets[originToken].symbol}
                                 </p>
                             ) : (
                                 <p></p>
                             )}
                         </div>
                         <div className="token-to-fiat">
-                            {originTokenState !== 0 ? <p>≈ {`$${originTokenState * 4600}`}</p> : <p></p>}
+                            {originTokenState !== 0 ? <p>≈ {`$${originTokenState * 4600}`} </p> : <p></p>}
                         </div>
                     </div>
                 </div>
@@ -134,7 +138,15 @@ const Swap = () => {
                     </div>
                     <div className="swap-input-footer">
                         <div className="balance">
-                            <p></p>
+                            {walletConnectState ? (
+                                tokenSelectIndexInWallet !== -1 ? (
+                                    <p>Balance: 0</p>
+                                ) : (
+                                    <p>Balance:</p>
+                                )
+                            ) : (
+                                <p></p>
+                            )}
                         </div>
                         <div className="token-to-fait">
                             {destinationTokenState !== 0 ? <p>≈ {`$${destinationTokenState * 1}`}</p> : <p></p>}

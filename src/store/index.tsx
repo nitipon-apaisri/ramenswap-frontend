@@ -34,6 +34,7 @@ const supportTokens = [
         color: "#ff007a",
         iconUrl: "https://cdn.coinranking.com/1heSvUgtl/uniswap-v2.svg?size=48x48",
         contractAddress: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+        // contractAddress: "0xdac17f958d2ee523a2206206994597c13d831ec7",
     },
     {
         symbol: "1INCH",
@@ -54,6 +55,7 @@ type ContextProps = {
     tokenSelectIndex: any;
     walletState: any;
     originToken: any;
+    tokenSelectIndexInWallet: any;
     connectWalletModalState: any;
     supportTokenModalState: any;
     changeOriginTokenBalance: any;
@@ -64,6 +66,7 @@ type ContextProps = {
     toggleSupportTokens: any;
     toggleWallet: any;
     changeOriginToken: any;
+    checkTokenInWallet: any;
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
@@ -75,6 +78,7 @@ const AppProvider = (props: any) => {
     const [supportTokenModalState, setSupportTokenModalState] = useState(false);
     const [selectTokenState, setSelectTokenState] = useState(false);
     const [tokenSelectIndex, setTokenSelectIndex] = useState(Number);
+    const [tokenSelectIndexInWallet, setTokenInWalletIndex] = useState(Number);
     const [walletState, setWalletState] = useState(false);
     const [originToken, setOriginToken] = useState(Number);
     const changeOriginTokenBalance = (balance: number) => {
@@ -103,6 +107,10 @@ const AppProvider = (props: any) => {
         setOriginToken(index);
         setWalletState(!walletState);
     };
+    const checkTokenInWallet = (contractAddress: string) => {
+        const token = wallet[0].assets.findIndex((r) => r.contractAddress === contractAddress);
+        setTokenInWalletIndex(token);
+    };
     const mockWallet: object = wallet[0];
     // const [state, setState] = useState('s')
     return (
@@ -119,6 +127,7 @@ const AppProvider = (props: any) => {
                 tokenSelectIndex,
                 walletState,
                 originToken,
+                tokenSelectIndexInWallet,
                 changeWalletConnectState,
                 changeOriginTokenBalance,
                 changeOriginTokenSymbol,
@@ -127,6 +136,7 @@ const AppProvider = (props: any) => {
                 toggleSupportTokens,
                 toggleWallet,
                 changeOriginToken,
+                checkTokenInWallet,
             }}
         >
             {props.children}

@@ -6,7 +6,8 @@ const Tokens = () => {
     const closeModal = () => {
         context.toggleSupportTokens();
     };
-    const selectToken = (index: number) => {
+    const selectToken = (index: number, contractAddress: string) => {
+        context.checkTokenInWallet(contractAddress);
         context.changeSelectToken(index);
         context.toggleSupportTokens();
     };
@@ -23,7 +24,11 @@ const Tokens = () => {
                     <hr className="modal-hr" />
                     <div className="token-list">
                         {context.supportTokens.map((token: any, index: any) => (
-                            <div className="token" key={index} onClick={() => selectToken(index)}>
+                            <div
+                                className="token"
+                                key={index}
+                                onClick={() => selectToken(index, token.contractAddress)}
+                            >
                                 <div className="token-icon">
                                     <img src={`${token.iconUrl}`} alt="token-icon" key={index.iconUrl} />
                                 </div>
