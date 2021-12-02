@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/index";
 
-const Tokens = () => {
+const AssetsInWallet = () => {
     const context = useContext(AppContext);
     const closeModal = () => {
-        context.toggleSupportTokens();
+        context.toggleWallet();
     };
     const selectToken = (index: number) => {
-        context.changeSelectToken(index);
-        context.toggleSupportTokens();
+        console.log(context.mockWallet.assets[index].balance);
+        context.changeOriginToken(index);
+        context.changeOriginTokenBalance(context.mockWallet.assets[index].balance);
     };
     return (
         <div className="modal">
@@ -22,7 +23,7 @@ const Tokens = () => {
                     </div>
                     <hr className="modal-hr" />
                     <div className="token-list">
-                        {context.supportTokens.map((token: any, index: any) => (
+                        {context.mockWallet.assets.map((token: any, index: any) => (
                             <div className="token" key={index} onClick={() => selectToken(index)}>
                                 <div className="token-icon">
                                     <img src={`${token.iconUrl}`} alt="token-icon" key={index.iconUrl} />
@@ -37,4 +38,4 @@ const Tokens = () => {
     );
 };
 
-export default Tokens;
+export default AssetsInWallet;

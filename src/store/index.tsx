@@ -9,6 +9,7 @@ const wallet = [
                 symbol: "ETH",
                 name: "Ethereum",
                 contractAddress: "0x",
+                iconUrl: "https://cdn.coinranking.com/rk4RKHOuW/eth.svg",
                 balance: 1000,
                 publicKey: "0xETH",
                 privateKey: "0xETHP",
@@ -16,6 +17,7 @@ const wallet = [
             {
                 symbol: "USDT",
                 name: "US Dollar Tether",
+                iconUrl: "https://cdn.coinranking.com/mgHqwlCLj/usdt.svg",
                 contractAddress: "0xdac17f958d2ee523a2206206994597c13d831ec7",
                 balance: 0,
                 publicKey: "0xUSDT",
@@ -50,6 +52,8 @@ type ContextProps = {
     originTokenSymbol: any;
     selectTokenState: any;
     tokenSelectIndex: any;
+    walletState: any;
+    originToken: any;
     connectWalletModalState: any;
     supportTokenModalState: any;
     changeOriginTokenBalance: any;
@@ -58,6 +62,8 @@ type ContextProps = {
     changeSelectToken: any;
     toggleConnectWallet: any;
     toggleSupportTokens: any;
+    toggleWallet: any;
+    changeOriginToken: any;
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
@@ -69,6 +75,8 @@ const AppProvider = (props: any) => {
     const [supportTokenModalState, setSupportTokenModalState] = useState(false);
     const [selectTokenState, setSelectTokenState] = useState(false);
     const [tokenSelectIndex, setTokenSelectIndex] = useState(Number);
+    const [walletState, setWalletState] = useState(false);
+    const [originToken, setOriginToken] = useState(Number);
     const changeOriginTokenBalance = (balance: number) => {
         setOriginTokenBalance(balance);
     };
@@ -84,9 +92,16 @@ const AppProvider = (props: any) => {
     const toggleSupportTokens = () => {
         setSupportTokenModalState(!supportTokenModalState);
     };
+    const toggleWallet = () => {
+        setWalletState(!walletState);
+    };
     const changeSelectToken = (index: number) => {
         setTokenSelectIndex(index);
         setSelectTokenState(true);
+    };
+    const changeOriginToken = (index: number) => {
+        setOriginToken(index);
+        setWalletState(!walletState);
     };
     const mockWallet: object = wallet[0];
     // const [state, setState] = useState('s')
@@ -102,12 +117,16 @@ const AppProvider = (props: any) => {
                 supportTokenModalState,
                 selectTokenState,
                 tokenSelectIndex,
+                walletState,
+                originToken,
                 changeWalletConnectState,
                 changeOriginTokenBalance,
                 changeOriginTokenSymbol,
                 changeSelectToken,
                 toggleConnectWallet,
                 toggleSupportTokens,
+                toggleWallet,
+                changeOriginToken,
             }}
         >
             {props.children}

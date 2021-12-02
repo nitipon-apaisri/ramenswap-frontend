@@ -3,29 +3,23 @@ import CaretDown from "../assets/CaretDown.png";
 import CaretDownWhite from "../assets/CaretDownWhite.svg";
 import ArrowDown from "../assets/ArrowDown.svg";
 import { AppContext } from "../store/index";
-const assets: any = [
-    {
-        symbol: "ETH",
-        name: "Ethereum",
-        color: "#3C3C3D",
-        iconUrl: "https://cdn.coinranking.com/rk4RKHOuW/eth.svg",
-        contractAddress: "0x",
-        balance: 0,
-        publicKey: "0xETH",
-    },
-];
 
 const Swap = () => {
     const context = useContext(AppContext);
     const [originTokenState, setOriginTokenState] = useState(0);
+    const [destinationTokenState, setDestinationTokenState] = useState(0);
     const [originTokenBalance, setOriginTokenBalance] = useState(0);
     const [walletConnectState, setWalletConnectState] = useState(false);
     const [originTokenSymbol, setOriginTokenSymbol] = useState("");
     const [insufficentState, setInsufficentState] = useState("");
-    const [selectTokenState, setSelectTokenState] = useState(Number);
+    const [selectTokenState, setSelectTokenState] = useState(Boolean);
     const [tokenIndex, setTokenIndex] = useState(Number);
+    const [originToken, setOriginToken] = useState(Number);
     const setOriginTokenInputState = (value: any) => {
         setOriginTokenState(Number(value));
+    };
+    const setDestinationInputState = (value: any) => {
+        setDestinationTokenState(Number(value));
     };
     const connectWallet = () => {
         context.toggleConnectWallet();
@@ -36,6 +30,9 @@ const Swap = () => {
     const toggleSupportTokens = () => {
         context.toggleSupportTokens();
     };
+    const toggleWallet = () => {
+        context.toggleWallet();
+    };
     useEffect(() => {
         if (originTokenBalance < originTokenState) {
             setInsufficentState("Insufficent");
@@ -44,6 +41,7 @@ const Swap = () => {
         } else {
             setInsufficentState("Swap");
         }
+        setOriginToken(context.originToken);
         setTokenIndex(context.tokenSelectIndex);
         setSelectTokenState(context.selectTokenState);
         setOriginTokenBalance(context.originTokenBalance);
@@ -55,6 +53,7 @@ const Swap = () => {
         context.originTokenSymbol,
         context.selectTokenState,
         context.tokenSelectIndex,
+        context.originToken,
         originTokenState,
         originTokenBalance,
     ]);
@@ -67,9 +66,13 @@ const Swap = () => {
                 <div className="origin-token">
                     <div className="main-content">
                         <div className="tokenSelect">
-                            <button>
-                                <img src={assets[0].iconUrl} alt="token" className="tokenIcon" />
-                                <p>{assets[0].symbol}</p>
+                            <button onClick={toggleWallet}>
+                                <img
+                                    src={context.mockWallet.assets[originToken].iconUrl}
+                                    alt="token"
+                                    className="tokenIcon"
+                                />
+                                <p>{context.mockWallet.assets[originToken].symbol}</p>
                                 <img src={CaretDown} alt="caret-down" className="caretDown" />
                             </button>
                         </div>
@@ -126,7 +129,7 @@ const Swap = () => {
                             type="number"
                             placeholder="0"
                             min="0"
-                            onChange={(e) => setOriginTokenInputState(e.target.value)}
+                            onChange={(e) => setDestinationInputState(e.target.value)}
                         />
                     </div>
                     <div className="swap-input-footer">
@@ -134,7 +137,7 @@ const Swap = () => {
                             <p></p>
                         </div>
                         <div className="token-to-fait">
-                            <p></p>
+                            {destinationTokenState !== 0 ? <p>≈ {`$${destinationTokenState * 1}`}</p> : <p></p>}
                         </div>
                     </div>
                 </div>

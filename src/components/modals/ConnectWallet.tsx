@@ -1,11 +1,9 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../store/index";
 const ConnectWalletModal = () => {
     const context = useContext(AppContext);
     const connectWallet = () => {
         context.changeWalletConnectState(true);
-        context.changeOriginTokenSymbol(context.mockWallet.assets[0].symbol);
-        context.changeOriginTokenBalance(context.mockWallet.assets[0].balance);
         context.toggleConnectWallet();
     };
     const closeModal = () => {

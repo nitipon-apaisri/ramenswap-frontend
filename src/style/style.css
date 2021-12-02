@@ -376,7 +376,6 @@ body .App .container .contents .modal .support-token-modal .modal-contents .toke
   margin-right: 16px;
 }
 body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token .token-icon img {
-  border-radius: 100%;
   width: 32px;
 }
 body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token p {
