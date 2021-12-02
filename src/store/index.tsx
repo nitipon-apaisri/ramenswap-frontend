@@ -2,6 +2,8 @@ import { createContext, useState } from "react";
 
 const wallet = [
     {
+        usename: "coin",
+        password: "defi",
         assets: [
             {
                 symbol: "ETH",
@@ -28,9 +30,11 @@ type ContextProps = {
     originTokenBalance: any;
     walletConnectState: any;
     originTokenSymbol: any;
+    connectWalletModalState: any;
     changeOriginTokenBalance: any;
     changeWalletConnectState: any;
     changeOriginTokenSymbol: any;
+    toggleConnectWallet: any;
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
@@ -38,6 +42,7 @@ const AppProvider = (props: any) => {
     const [originTokenBalance, setOriginTokenBalance] = useState(0);
     const [walletConnectState, setWalletConnectState] = useState(false);
     const [originTokenSymbol, setOriginTokenSymbol] = useState("");
+    const [connectWalletModalState, setConnectWalletModalState] = useState(false);
     const changeOriginTokenBalance = (balance: number) => {
         setOriginTokenBalance(balance);
     };
@@ -46,6 +51,9 @@ const AppProvider = (props: any) => {
     };
     const changeOriginTokenSymbol = (symbol: string) => {
         setOriginTokenSymbol(symbol);
+    };
+    const toggleConnectWallet = () => {
+        setConnectWalletModalState(!connectWalletModalState);
     };
     const mockWallet: object = wallet[0];
     // const [state, setState] = useState('s')
@@ -56,9 +64,11 @@ const AppProvider = (props: any) => {
                 originTokenBalance,
                 walletConnectState,
                 originTokenSymbol,
+                connectWalletModalState,
                 changeWalletConnectState,
                 changeOriginTokenBalance,
                 changeOriginTokenSymbol,
+                toggleConnectWallet,
             }}
         >
             {props.children}

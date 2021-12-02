@@ -124,7 +124,7 @@ const Swap = () => {
             <div className="swap-footer">
                 {walletConnectState ? (
                     <button
-                        onClick={originTokenBalance < originTokenState ? connectWallet : swap}
+                        onClick={originTokenBalance < originTokenState ? swap : swap}
                         className={insufficentState === "Swap" ? "swap" : "enter-an-amount"}
                     >
                         <p>{insufficentState}</p>

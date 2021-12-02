@@ -13,10 +13,7 @@ const Menu = () => {
     };
 
     const connectWallet = () => {
-        setEthAddress(context.mockWallet.assets[0].publicKey);
-        context.changeWalletConnectState(true);
-        context.changeOriginTokenSymbol(context.mockWallet.assets[0].symbol);
-        context.changeOriginTokenBalance(context.mockWallet.assets[0].balance);
+        context.toggleConnectWallet();
     };
 
     useEffect(() => {

@@ -101,6 +101,9 @@ body .App {
   background: #fff1dc;
   background: linear-gradient(180deg, #fff1dc 20%, white 100%);
 }
+body .App .container {
+  position: relative;
+}
 body .App .container .menu-bar {
   display: flex;
   justify-content: space-between;
@@ -171,9 +174,6 @@ body .App .container .menu-bar .menu-actions .wallet button.connected:hover {
 body .App .container .menu-bar .menu-actions .other {
   width: 48px;
   justify-content: center;
-}
-body .App .container .contents {
-  padding: 24px;
 }
 body .App .container .contents .swap-contents {
   box-shadow: rgba(0, 0, 0, 0.005) 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 4px 8px, rgba(0, 0, 0, 0.02) 0px 16px 24px, rgba(0, 0, 0, 0.005) 0px 24px 32px;
@@ -281,6 +281,60 @@ body .App .container .contents .swap-contents .swap-footer button.swap p {
   color: #ff9b04;
   font-size: 1rem;
   text-align: center;
+}
+body .App .container .contents .modal {
+  width: 100%;
+  top: 0;
+  position: absolute;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .App .container .contents .modal .modal-hr {
+  border: 2px solid #000000;
+}
+body .App .container .contents .modal .connect-wallet-modal {
+  border-radius: 32px;
+  width: 640px;
+  background-color: white;
+  max-height: 400px;
+  padding: 40px;
+  box-sizing: border-box;
+  margin-top: -320px;
+}
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons {
+  display: flex;
+  flex-direction: column;
+}
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons button {
+  padding: 24px;
+  border: none;
+  border-radius: 16px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons button p {
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+}
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons .sign-in {
+  color: #464646;
+  background-color: #f1f1f1;
+}
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons .sign-in:hover {
+  background-color: #d6d6d6;
+  transition-duration: 200ms;
+}
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons .sign-up {
+  color: #464646;
+  background-color: #b6b6b6;
+}
+body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons .sign-up:hover {
+  color: #f1f1f1;
+  background-color: #838383;
+  transition-duration: 200ms;
 }
 
 /*# sourceMappingURL=style.css.map */
