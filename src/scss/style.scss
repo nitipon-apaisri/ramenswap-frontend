@@ -70,8 +70,12 @@ body {
                         }
                     }
                     .wallet {
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
                         button.not-connect {
                             @extend .menu-button-default;
+                            cursor: pointer;
                             color: $strong-orange;
                             background-color: $soft-orange;
                         }
@@ -82,6 +86,7 @@ body {
                         }
                         button.connected {
                             @extend .menu-button-default;
+                            cursor: pointer;
                             color: #000000;
                             background-color: #ffffff;
                         }
@@ -89,6 +94,19 @@ body {
                             color: $strong-orange-hover;
                             background-color: $soft-orange-hover;
                             transition-duration: 200ms;
+                        }
+                        .wallet-options {
+                            position: absolute;
+                            margin-top: -20px;
+                            .start-option {
+                                border-radius: 0.75rem 0.75rem 0 0;
+                            }
+                            .middle-option {
+                                border-radius: 0;
+                            }
+                            .end-option {
+                                border-radius: 0 0 0.75rem 0.75rem;
+                            }
                         }
                     }
                     .other {

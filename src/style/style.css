@@ -38,7 +38,6 @@ body .App .container .contents .swap-contents .swap-inputs .origin-token .main-c
   overflow: hidden;
   display: flex;
   justify-content: center;
-  cursor: pointer;
   padding: 10px 16px;
 }
 
@@ -205,7 +204,13 @@ body .App .container .menu-bar .menu-actions .network button img {
   margin-right: 8px;
   width: 1.5rem;
 }
+body .App .container .menu-bar .menu-actions .wallet {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 body .App .container .menu-bar .menu-actions .wallet button.not-connect {
+  cursor: pointer;
   color: #ff9b04;
   background-color: #ffdba4;
 }
@@ -215,6 +220,7 @@ body .App .container .menu-bar .menu-actions .wallet button.not-connect:hover {
   transition-duration: 200ms;
 }
 body .App .container .menu-bar .menu-actions .wallet button.connected {
+  cursor: pointer;
   color: #000000;
   background-color: #ffffff;
 }
@@ -222,6 +228,19 @@ body .App .container .menu-bar .menu-actions .wallet button.connected:hover {
   color: #ff9900;
   background-color: #fdce87;
   transition-duration: 200ms;
+}
+body .App .container .menu-bar .menu-actions .wallet .wallet-options {
+  position: absolute;
+  margin-top: -20px;
+}
+body .App .container .menu-bar .menu-actions .wallet .wallet-options .start-option {
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+body .App .container .menu-bar .menu-actions .wallet .wallet-options .middle-option {
+  border-radius: 0;
+}
+body .App .container .menu-bar .menu-actions .wallet .wallet-options .end-option {
+  border-radius: 0 0 0.75rem 0.75rem;
 }
 body .App .container .menu-bar .menu-actions .other {
   width: 48px;

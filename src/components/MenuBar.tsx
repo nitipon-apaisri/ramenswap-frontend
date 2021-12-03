@@ -7,7 +7,7 @@ const Menu = () => {
     const context = useContext(AppContext);
     const [toggleState, setToggleState] = useState(1);
     const [ethAddress, setEthAddress] = useState("");
-
+    const [walletOptionsState, setWalletOptionState] = useState(false);
     const toggleTab = (index: number) => {
         setToggleState(index);
     };
@@ -15,7 +15,14 @@ const Menu = () => {
     const connectWallet = () => {
         context.toggleConnectWallet();
     };
-
+    const toggleWalletOption = () => {
+        setWalletOptionState(!walletOptionsState);
+    };
+    const signOut = () => {
+        setEthAddress("");
+        setWalletOptionState(!walletOptionsState);
+        context.changeWalletConnectState(false);
+    };
     useEffect(() => {
         if (context.walletConnectState) setEthAddress(context.mockWallet.assets[0].publicKey);
     }, [context.walletConnectState, context.mockWallet.assets]);
@@ -47,9 +54,23 @@ const Menu = () => {
                 </div>
                 <div className="wallet">
                     {ethAddress ? (
-                        <button onClick={connectWallet} className="connected">
-                            <p>{ethAddress}</p>
-                        </button>
+                        !walletOptionsState ? (
+                            <button onClick={toggleWalletOption} className="connected">
+                                <p>{ethAddress}</p>
+                            </button>
+                        ) : (
+                            <div className="wallet-options">
+                                <button onClick={toggleWalletOption} className="connected start-option">
+                                    <p>{ethAddress}</p>
+                                </button>
+                                <button className="connected middle-option">
+                                    <p>Tokens</p>
+                                </button>
+                                <button onClick={signOut} className="connected end-option">
+                                    <p>Sign Out</p>
+                                </button>
+                            </div>
+                        )
                     ) : (
                         <button onClick={connectWallet} className="not-connect">
                             <p>Connect wallet</p>
