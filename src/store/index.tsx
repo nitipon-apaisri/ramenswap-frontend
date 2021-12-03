@@ -12,7 +12,7 @@ const wallet = [
                 contractAddress: "0x",
                 iconUrl: "https://cdn.coinranking.com/rk4RKHOuW/eth.svg",
                 balance: 1000,
-                publicKey: "0xETH",
+                publicKey: "0xxGA9kcKGmlSSPxguPwgKIsPi67jEf7HDZW6HoIy2",
                 privateKey: "0xETHP",
             },
             {
@@ -21,7 +21,7 @@ const wallet = [
                 iconUrl: "https://cdn.coinranking.com/mgHqwlCLj/usdt.svg",
                 contractAddress: "0xdac17f958d2ee523a2206206994597c13d831ec7",
                 balance: 0,
-                publicKey: "0xUSDT",
+                publicKey: "0xhHvmz5vLV3D8VQSv6HSWRIjN2adbz9ID4ksKTaAR",
                 privateKey: "0xUSDTP",
             },
         ],

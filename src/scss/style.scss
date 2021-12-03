@@ -89,6 +89,10 @@ body {
                             cursor: pointer;
                             color: #000000;
                             background-color: #ffffff;
+                            p {
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
                         }
                         button.connected:hover {
                             color: $strong-orange-hover;

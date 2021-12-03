@@ -35,7 +35,6 @@ body .App .container .contents .swap-contents .swap-inputs .origin-token .main-c
 .menu-button-default, body .App .container .menu-bar .menu-actions .wallet button.connected, body .App .container .menu-bar .menu-actions .wallet button.not-connect {
   min-width: 140px;
   max-width: 140px;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   padding: 10px 16px;
@@ -223,6 +222,10 @@ body .App .container .menu-bar .menu-actions .wallet button.connected {
   cursor: pointer;
   color: #000000;
   background-color: #ffffff;
+}
+body .App .container .menu-bar .menu-actions .wallet button.connected p {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 body .App .container .menu-bar .menu-actions .wallet button.connected:hover {
   color: #ff9900;

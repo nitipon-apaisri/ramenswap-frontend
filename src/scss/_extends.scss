@@ -34,10 +34,8 @@
 .menu-button-default {
     min-width: 140px;
     max-width: 140px;
-    overflow: hidden;
     display: flex;
     justify-content: center;
-
     @extend .menu-content;
     padding: 10px 16px;
 }
