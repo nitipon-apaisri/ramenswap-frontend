@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useState } from "react";
 
 const wallet = [
@@ -27,23 +28,7 @@ const wallet = [
     },
 ];
 
-const supportTokens = [
-    {
-        symbol: "UNI",
-        name: "Uniswap",
-        color: "#ff007a",
-        iconUrl: "https://cdn.coinranking.com/1heSvUgtl/uniswap-v2.svg?size=48x48",
-        contractAddress: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-        // contractAddress: "0xdac17f958d2ee523a2206206994597c13d831ec7",
-    },
-    {
-        symbol: "1INCH",
-        name: "1inch Token",
-        color: "#ed6758",
-        iconUrl: "https://cdn.coinranking.com/OypO2Qln6/1inch_token.png",
-        contractAddress: "0x111111111117dc0aa78b770fa6a738034120c302",
-    },
-];
+const supportTokens: any = [];
 
 type ContextProps = {
     mockWallet: any;
@@ -70,6 +55,12 @@ type ContextProps = {
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
+axios.get("http://localhost:4200/assets").then((r) => {
+    if (r.data.assets.length !== supportTokens) {
+        r.data.assets.forEach((token: object) => supportTokens.push(token));
+    }
+});
+
 const AppProvider = (props: any) => {
     const [originTokenBalance, setOriginTokenBalance] = useState(0);
     const [walletConnectState, setWalletConnectState] = useState(false);
@@ -78,7 +69,7 @@ const AppProvider = (props: any) => {
     const [supportTokenModalState, setSupportTokenModalState] = useState(false);
     const [selectTokenState, setSelectTokenState] = useState(false);
     const [tokenSelectIndex, setTokenSelectIndex] = useState(Number);
-    const [tokenSelectIndexInWallet, setTokenInWalletIndex] = useState(Number);
+    const [tokenSelectIndexInWallet, setTokenInWalletIndex] = useState(-1);
     const [walletState, setWalletState] = useState(false);
     const [originToken, setOriginToken] = useState(Number);
     const changeOriginTokenBalance = (balance: number) => {

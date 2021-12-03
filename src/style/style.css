@@ -50,27 +50,56 @@ body .App .container .contents .swap-contents .swap-inputs .origin-token .main-c
   cursor: pointer;
 }
 
-.modal-container, body .App .container .contents .modal .support-token-modal, body .App .container .contents .modal .connect-wallet-modal {
+.modal-container, body .App .container .contents .modal .tokens-in-wallet-modal, body .App .container .contents .modal .support-token-modal, body .App .container .contents .modal .connect-wallet-modal {
   border-radius: 32px;
   width: 640px;
   background-color: white;
   padding: 40px;
   box-sizing: border-box;
-  margin-top: -320px;
 }
-.modal-container .modal-contents .title, body .App .container .contents .modal .support-token-modal .modal-contents .title, body .App .container .contents .modal .connect-wallet-modal .modal-contents .title {
+.modal-container .modal-contents .title, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .title, body .App .container .contents .modal .support-token-modal .modal-contents .title, body .App .container .contents .modal .connect-wallet-modal .modal-contents .title {
   display: flex;
   justify-content: space-between;
 }
-.modal-container .modal-contents .title button, body .App .container .contents .modal .support-token-modal .modal-contents .title button, body .App .container .contents .modal .connect-wallet-modal .modal-contents .title button {
+.modal-container .modal-contents .title button, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .title button, body .App .container .contents .modal .support-token-modal .modal-contents .title button, body .App .container .contents .modal .connect-wallet-modal .modal-contents .title button {
   cursor: pointer;
   border: none;
   padding: 8px 10px;
   border-radius: 4px;
+  background-color: #f7f7f7;
 }
-.modal-container .modal-contents .title button:hover, body .App .container .contents .modal .support-token-modal .modal-contents .title button:hover, body .App .container .contents .modal .connect-wallet-modal .modal-contents .title button:hover {
-  background-color: #8b8b8b;
+.modal-container .modal-contents .title button:hover, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .title button:hover, body .App .container .contents .modal .support-token-modal .modal-contents .title button:hover, body .App .container .contents .modal .connect-wallet-modal .modal-contents .title button:hover {
+  background-color: #c5c5c5;
   transition-duration: 200ms;
+}
+.modal-container .modal-contents .token-list .token, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .token-list .token, body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token, body .App .container .contents .modal .connect-wallet-modal .modal-contents .token-list .token {
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  margin: 8px 0;
+  cursor: pointer;
+}
+.modal-container .modal-contents .token-list .token .token-icon, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .token-list .token .token-icon, body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token .token-icon, body .App .container .contents .modal .connect-wallet-modal .modal-contents .token-list .token .token-icon {
+  padding: 4px;
+  margin-right: 16px;
+}
+.modal-container .modal-contents .token-list .token .token-icon img, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .token-list .token .token-icon img, body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token .token-icon img, body .App .container .contents .modal .connect-wallet-modal .modal-contents .token-list .token .token-icon img {
+  width: 32px;
+}
+.modal-container .modal-contents .token-list .token p, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .token-list .token p, body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token p, body .App .container .contents .modal .connect-wallet-modal .modal-contents .token-list .token p {
+  color: black;
+}
+.modal-container .modal-contents .token-list .token:hover, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .token-list .token:hover, body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token:hover, body .App .container .contents .modal .connect-wallet-modal .modal-contents .token-list .token:hover {
+  background-color: #eeeeee;
+  transition-duration: 200ms;
+}
+.modal-container .modal-contents .token-list .selected, body .App .container .contents .modal .tokens-in-wallet-modal .modal-contents .token-list .selected, body .App .container .contents .modal .support-token-modal .modal-contents .token-list .selected, body .App .container .contents .modal .connect-wallet-modal .modal-contents .token-list .selected {
+  opacity: 0.1;
 }
 
 .tokenInput, body .App .container .contents .swap-contents .swap-inputs .destination-token, body .App .container .contents .swap-contents .swap-inputs .origin-token {
@@ -326,6 +355,9 @@ body .App .container .contents .modal {
 body .App .container .contents .modal .modal-hr {
   border: 2px solid #000000;
 }
+body .App .container .contents .modal .connect-wallet-modal {
+  margin-top: -320px;
+}
 body .App .container .contents .modal .connect-wallet-modal .connect-wallet-buttons {
   display: flex;
   flex-direction: column;
@@ -359,31 +391,15 @@ body .App .container .contents .modal .connect-wallet-modal .connect-wallet-butt
   transition-duration: 200ms;
 }
 body .App .container .contents .modal .support-token-modal {
+  margin-top: -200px;
   width: 480px;
 }
-body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token {
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  background-color: #333333;
-  padding: 8px 16px;
-  box-sizing: border-box;
-  margin: 8px 0;
-  cursor: pointer;
+body .App .container .contents .modal .support-token-modal .selected {
+  cursor: not-allowed;
 }
-body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token .token-icon {
-  padding: 4px;
-  margin-right: 16px;
-}
-body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token .token-icon img {
-  width: 32px;
-}
-body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token p {
-  color: white;
-}
-body .App .container .contents .modal .support-token-modal .modal-contents .token-list .token:hover {
-  background-color: #494949;
-  transition-duration: 200ms;
+body .App .container .contents .modal .tokens-in-wallet-modal {
+  margin-top: -200px;
+  width: 480px;
 }
 
 /*# sourceMappingURL=style.css.map */

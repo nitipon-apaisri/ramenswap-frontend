@@ -138,11 +138,14 @@ const Swap = () => {
                     </div>
                     <div className="swap-input-footer">
                         <div className="balance">
-                            {walletConnectState ? (
+                            {walletConnectState && selectTokenState ? (
                                 tokenSelectIndexInWallet !== -1 ? (
-                                    <p>Balance: 0</p>
+                                    <p>
+                                        Balance: {context.mockWallet.assets[tokenSelectIndexInWallet].balance}{" "}
+                                        {context.mockWallet.assets[tokenSelectIndexInWallet].symbol}
+                                    </p>
                                 ) : (
-                                    <p>Balance:</p>
+                                    <p>Balance: 0</p>
                                 )
                             ) : (
                                 <p></p>

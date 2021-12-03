@@ -7,13 +7,12 @@ const AssetsInWallet = () => {
         context.toggleWallet();
     };
     const selectToken = (index: number) => {
-        console.log(context.mockWallet.assets[index].balance);
         context.changeOriginToken(index);
         context.changeOriginTokenBalance(context.mockWallet.assets[index].balance);
     };
     return (
         <div className="modal">
-            <div className="support-token-modal">
+            <div className="tokens-in-wallet-modal">
                 <div className="modal-contents">
                     <div className="title">
                         <h2>Tokens</h2>
