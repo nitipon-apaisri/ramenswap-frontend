@@ -293,7 +293,7 @@ body {
                                 transition-duration: 200ms;
                             }
                         }
-                        .sign-in-input {
+                        .wallet-actions {
                             display: flex;
                             flex-direction: column;
                             input {
@@ -315,14 +315,14 @@ body {
                                     border: none;
                                     cursor: pointer;
                                 }
-                                button.sign-in-button {
+                                button.confirm-button {
                                     background-color: #363636;
                                     padding: 16px;
                                     color: white;
-                                    width: 120px;
+                                    max-width: 140px;
                                     border-radius: 8px;
                                 }
-                                button.sign-in-button:hover {
+                                button.confirm-button:hover {
                                     background-color: #1a1a1a;
                                     transition-duration: 300ms;
                                 }

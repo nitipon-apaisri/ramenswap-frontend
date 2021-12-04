@@ -20,6 +20,7 @@ const ConnectWalletModal = () => {
     };
     const back = () => {
         setSignInState(false);
+        setCreateWalletState(false);
     };
     const toggleSignInWallet = () => {
         setSignInState(true);
@@ -51,7 +52,7 @@ const ConnectWalletModal = () => {
                             </button>
                         </div>
                     ) : signInState ? (
-                        <div className="sign-in-input">
+                        <div className="wallet-actions">
                             <input
                                 type="text"
                                 placeholder="Ethereum Public Key"
@@ -66,17 +67,22 @@ const ConnectWalletModal = () => {
                                 <button className="back-button" onClick={back}>
                                     <p> Back</p>
                                 </button>
-                                <button className="sign-in-button" onClick={connectWallet}>
+                                <button className="confirm-button" onClick={connectWallet}>
                                     <p>Sign In</p>
                                 </button>
                             </div>
                         </div>
                     ) : (
-                        <div className="createWallet">
-                            <input type="text" placeholder="password" />
-                            <button className="sign-in" onClick={connectWallet}>
-                                <p>Create Wallet</p>
-                            </button>
+                        <div className="wallet-actions">
+                            <input type="password" placeholder="password" />
+                            <div className="footer">
+                                <button className="back-button" onClick={back}>
+                                    <p> Back</p>
+                                </button>
+                                <button className="confirm-button" onClick={connectWallet}>
+                                    <p>Create Wallet</p>
+                                </button>
+                            </div>
                         </div>
                     )}
                 </div>
