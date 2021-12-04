@@ -166,7 +166,7 @@ const Swap = () => {
                             {walletConnectState && selectTokenState ? (
                                 tokenSelectIndexInWallet !== -1 ? (
                                     <p>
-                                        Balance: {context.mockWallet.assets[tokenSelectIndexInWallet].balance}{" "}
+                                        Balance: {context.mockWallet.assets[tokenSelectIndexInWallet].balance}
                                         {context.mockWallet.assets[tokenSelectIndexInWallet].symbol}
                                     </p>
                                 ) : (

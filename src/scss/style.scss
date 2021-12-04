@@ -293,6 +293,49 @@ body {
                                 transition-duration: 200ms;
                             }
                         }
+                        .sign-in-input {
+                            display: flex;
+                            flex-direction: column;
+                            input {
+                                padding: 24px 16px;
+                                border: none;
+                                background-color: #f1f1f1;
+                                border-radius: 16px;
+                                margin: 4px 0;
+                            }
+                            input::placeholder {
+                                font-style: italic;
+                            }
+                            .footer {
+                                display: flex;
+                                justify-content: space-between;
+                                button {
+                                    justify-content: right;
+                                    margin-top: 8px;
+                                    border: none;
+                                    cursor: pointer;
+                                }
+                                button.sign-in-button {
+                                    background-color: #363636;
+                                    padding: 16px;
+                                    color: white;
+                                    width: 120px;
+                                    border-radius: 8px;
+                                }
+                                button.sign-in-button:hover {
+                                    background-color: #1a1a1a;
+                                    transition-duration: 300ms;
+                                }
+                                .back-button {
+                                    background-color: transparent;
+                                    color: #363636;
+                                    padding: 0 16px;
+                                }
+                                .back-button:hover {
+                                    color: #141414;
+                                }
+                            }
+                        }
                     }
                     .support-token-modal {
                         @extend .modal-container;

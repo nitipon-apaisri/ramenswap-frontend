@@ -18,6 +18,9 @@ const ConnectWalletModal = () => {
             console.log("Something went wrong");
         }
     };
+    const back = () => {
+        setSignInState(false);
+    };
     const toggleSignInWallet = () => {
         setSignInState(true);
     };
@@ -48,20 +51,25 @@ const ConnectWalletModal = () => {
                             </button>
                         </div>
                     ) : signInState ? (
-                        <div className="sign-in">
+                        <div className="sign-in-input">
                             <input
                                 type="text"
-                                placeholder="Ethereum address"
+                                placeholder="Ethereum Public Key"
                                 onChange={(e) => setEthAddress(e.target.value)}
                             />
                             <input
-                                type="text"
-                                placeholder="Ethereum address"
+                                type="password"
+                                placeholder="Password"
                                 onChange={(e) => setWalletPassword(e.target.value)}
                             />
-                            <button className="sign-in" onClick={connectWallet}>
-                                <p>Sign In</p>
-                            </button>
+                            <div className="footer">
+                                <button className="back-button" onClick={back}>
+                                    <p> Back</p>
+                                </button>
+                                <button className="sign-in-button" onClick={connectWallet}>
+                                    <p>Sign In</p>
+                                </button>
+                            </div>
                         </div>
                     ) : (
                         <div className="createWallet">

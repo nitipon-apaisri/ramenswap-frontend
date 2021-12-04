@@ -81,7 +81,6 @@ const AppProvider = (props: any) => {
     };
     const changeWalletConnectState = (state: boolean, walletIndex: number) => {
         setWalletConnectState(state);
-        console.log(walletIndex);
         setWalletIndex(walletIndex);
     };
     const changeOriginTokenSymbol = (symbol: string) => {
