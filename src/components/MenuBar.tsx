@@ -24,8 +24,8 @@ const Menu = () => {
         context.changeWalletConnectState(false);
     };
     useEffect(() => {
-        if (context.walletConnectState) setEthAddress(context.mockWallet.assets[0].publicKey);
-    }, [context.walletConnectState, context.mockWallet.assets]);
+        if (context.walletConnectState) setEthAddress(context.mockWallet.assets[context.walletIndex].publicKey);
+    }, [context.walletConnectState, context.mockWallet.assets, context.walletIndex]);
     const getActiveClass = (index: number, className: string) => (toggleState === index ? className : "");
 
     return (

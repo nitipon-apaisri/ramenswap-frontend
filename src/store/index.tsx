@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 
 const wallet = [
     {
-        usename: "coin",
         password: "defi",
         assets: [
             {
@@ -34,6 +33,8 @@ const supportTokens: any = [];
 
 type ContextProps = {
     mockWallet: any;
+    wallet: any;
+    walletIndex: any;
     supportTokens: any;
     originTokenBalance: any;
     walletConnectState: any;
@@ -66,6 +67,7 @@ axios.get("http://localhost:4200/assets").then((r) => {
 const AppProvider = (props: any) => {
     const [originTokenBalance, setOriginTokenBalance] = useState(0);
     const [walletConnectState, setWalletConnectState] = useState(false);
+    const [walletIndex, setWalletIndex] = useState(Number);
     const [originTokenSymbol, setOriginTokenSymbol] = useState("");
     const [connectWalletModalState, setConnectWalletModalState] = useState(false);
     const [supportTokenModalState, setSupportTokenModalState] = useState(false);
@@ -77,8 +79,10 @@ const AppProvider = (props: any) => {
     const changeOriginTokenBalance = (balance: number) => {
         setOriginTokenBalance(balance);
     };
-    const changeWalletConnectState = (state: boolean) => {
+    const changeWalletConnectState = (state: boolean, walletIndex: number) => {
         setWalletConnectState(state);
+        console.log(walletIndex);
+        setWalletIndex(walletIndex);
     };
     const changeOriginTokenSymbol = (symbol: string) => {
         setOriginTokenSymbol(symbol);
@@ -105,11 +109,12 @@ const AppProvider = (props: any) => {
         setTokenInWalletIndex(token);
     };
     const mockWallet: object = wallet[0];
-    // const [state, setState] = useState('s')
     return (
         <AppContext.Provider
             value={{
                 mockWallet,
+                wallet,
+                walletIndex,
                 supportTokens,
                 originTokenBalance,
                 walletConnectState,

@@ -6,32 +6,38 @@ import { AppContext } from "../store/index";
 
 const Swap = () => {
     const context = useContext(AppContext);
+    const [originTokenSymbol, setOriginTokenSymbol] = useState("");
+    const [insufficentState, setInsufficentState] = useState("");
     const [originTokenState, setOriginTokenState] = useState(0);
     const [originTokenCurrentPrice, setOriginTokenCurrentPrice] = useState(0);
     const [originTokenBalance, setOriginTokenBalance] = useState(0);
     const [walletConnectState, setWalletConnectState] = useState(false);
-    const [originTokenSymbol, setOriginTokenSymbol] = useState("");
-    const [insufficentState, setInsufficentState] = useState("");
     const [selectTokenState, setSelectTokenState] = useState(Boolean);
     const [tokenIndex, setTokenIndex] = useState(Number);
     const [originToken, setOriginToken] = useState(Number);
     const [tokenSelectIndexInWallet, setTokenInWalletIndex] = useState(Number);
     const [selectedTokenCurrentPrice, setSelectedTokenCurrentPrice] = useState(Number);
+
     const setOriginTokenInputState = (value: any) => {
         setOriginTokenState(Number(value));
     };
+
     const connectWallet = () => {
         context.toggleConnectWallet();
     };
+
     const swap = () => {
         console.log("Swap");
     };
+
     const toggleSupportTokens = () => {
         context.toggleSupportTokens();
     };
+
     const toggleWallet = () => {
         context.toggleWallet();
     };
+
     useEffect(() => {
         if (originTokenBalance < originTokenState) {
             setInsufficentState("Insufficent");
@@ -64,6 +70,7 @@ const Swap = () => {
         selectTokenState,
         selectedTokenCurrentPrice,
     ]);
+
     return (
         <div className="swap-contents">
             <div className="content-header">
@@ -170,7 +177,12 @@ const Swap = () => {
                             )}
                         </div>
                         <div className="token-to-fait">
-                            {selectTokenState ? <p>≈{`${originTokenState * originTokenCurrentPrice}`}</p> : <p></p>}
+                            {selectTokenState && originTokenState !== 0 ? (
+                                /* prettier-ignore */
+                                <p>{`≈ $${((originTokenState * originTokenCurrentPrice) / selectedTokenCurrentPrice) * selectedTokenCurrentPrice}`}</p>
+                            ) : (
+                                <p></p>
+                            )}
                         </div>
                     </div>
                 </div>
