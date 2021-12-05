@@ -95,20 +95,30 @@ const Swap = () => {
                                     <img src={CaretDown} alt="caret-down" className="caretDown" />
                                 </button>
                             </div>
+                        ) : context.supportTokens.length !== 0 ? (
+                            <div className="tokenSelect">
+                                <button onClick={toggleSupportTokens}>
+                                    <img
+                                        src={context.supportTokens[originToken].iconUrl}
+                                        alt="token"
+                                        className="tokenIcon"
+                                    />
+                                    <p>{context.supportTokens[originToken].symbol}</p>
+                                    <img src={CaretDown} alt="caret-down" className="caretDown" />
+                                </button>
+                            </div>
                         ) : (
-                            context.supportTokens.length !== 0 && (
-                                <div className="tokenSelect">
-                                    <button onClick={toggleSupportTokens}>
-                                        <img
-                                            src={context.supportTokens[originToken].iconUrl}
-                                            alt="token"
-                                            className="tokenIcon"
-                                        />
-                                        <p>{context.supportTokens[originToken].symbol}</p>
-                                        <img src={CaretDown} alt="caret-down" className="caretDown" />
-                                    </button>
-                                </div>
-                            )
+                            <div className="tokenSelect">
+                                <button onClick={toggleSupportTokens}>
+                                    <img
+                                        src="https://cdn.coinranking.com/rk4RKHOuW/eth.svg"
+                                        alt="token"
+                                        className="tokenIcon"
+                                    />
+                                    <p>ETH</p>
+                                    <img src={CaretDown} alt="caret-down" className="caretDown" />
+                                </button>
+                            </div>
                         )}
                         <input
                             type="number"
