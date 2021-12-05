@@ -34,11 +34,9 @@ const Swap = () => {
     const toggleSupportTokens = () => {
         context.toggleSupportTokens();
     };
-
     const toggleWallet = () => {
         context.toggleWallet();
     };
-
     useEffect(() => {
         if (originTokenBalance < originTokenState) {
             setInsufficentState("Insufficent");
@@ -47,8 +45,12 @@ const Swap = () => {
         } else {
             setInsufficentState("Swap");
         }
-        setOriginTokenCurrentPrice(context.wallet[context.walletIndex].assets[context.originToken].currentPrice);
-        setSelectedTokenCurrentPrice(context.supportTokens[context.tokenSelectIndex].currentPrice);
+        if (context.supportTokens.length !== 0) {
+            setSelectedTokenCurrentPrice(context.supportTokens[context.tokenSelectIndex].currentPrice);
+        }
+        if (context.wallet.length !== 0) {
+            setOriginTokenCurrentPrice(context.wallet[context.walletIndex].assets[context.originToken].currentPrice);
+        }
         setTokenInWalletIndex(context.tokenSelectIndexInWallet);
         setOriginToken(context.originToken);
         setTokenIndex(context.tokenSelectIndex);
@@ -81,17 +83,33 @@ const Swap = () => {
             <div className="swap-inputs">
                 <div className="origin-token">
                     <div className="main-content">
-                        <div className="tokenSelect">
-                            <button onClick={toggleWallet}>
-                                <img
-                                    src={context.wallet[context.walletIndex].assets[originToken].iconUrl}
-                                    alt="token"
-                                    className="tokenIcon"
-                                />
-                                <p>{context.wallet[context.walletIndex].assets[originToken].symbol}</p>
-                                <img src={CaretDown} alt="caret-down" className="caretDown" />
-                            </button>
-                        </div>
+                        {context.wallet.length !== 0 ? (
+                            <div className="tokenSelect">
+                                <button onClick={toggleWallet}>
+                                    <img
+                                        src={context.wallet[context.walletIndex].assets[originToken].iconUrl}
+                                        alt="token"
+                                        className="tokenIcon"
+                                    />
+                                    <p>{context.wallet[context.walletIndex].assets[originToken].symbol}</p>
+                                    <img src={CaretDown} alt="caret-down" className="caretDown" />
+                                </button>
+                            </div>
+                        ) : (
+                            context.supportTokens.length !== 0 && (
+                                <div className="tokenSelect">
+                                    <button onClick={toggleSupportTokens}>
+                                        <img
+                                            src={context.supportTokens[originToken].iconUrl}
+                                            alt="token"
+                                            className="tokenIcon"
+                                        />
+                                        <p>{context.supportTokens[originToken].symbol}</p>
+                                        <img src={CaretDown} alt="caret-down" className="caretDown" />
+                                    </button>
+                                </div>
+                            )
+                        )}
                         <input
                             type="number"
                             placeholder="0"

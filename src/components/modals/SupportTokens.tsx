@@ -28,31 +28,42 @@ const Tokens = () => {
                     </div>
                     <hr className="modal-hr" />
                     <div className="token-list">
-                        {context.supportTokens.map((token: any, index: any) => {
-                            return (
-                                <button
-                                    className={`token ${
-                                        context.wallet[context.walletIndex].assets[originTokenSelectedState]
-                                            .contractAddress === token.contractAddress
-                                            ? "selected"
-                                            : ""
-                                    }`}
-                                    key={index}
-                                    disabled={
-                                        context.wallet[context.walletIndex].assets[originTokenSelectedState]
-                                            .contractAddress === token.contractAddress
-                                            ? true
-                                            : false
-                                    }
-                                    onClick={() => selectToken(index, token.contractAddress)}
-                                >
-                                    <div className="token-icon">
-                                        <img src={`${token.iconUrl}`} alt="token-icon" key={index.iconUrl} />
-                                    </div>
-                                    <p key={token.symbol}>{token.symbol}</p>
-                                </button>
-                            );
-                        })}
+                        {context.walletConnectState
+                            ? context.supportTokens.map((token: any, index: any) => {
+                                  return (
+                                      <button
+                                          className={`token ${
+                                              context.wallet[context.walletIndex].assets[originTokenSelectedState]
+                                                  .contractAddress === token.contractAddress
+                                                  ? "selected"
+                                                  : ""
+                                          }`}
+                                          key={index}
+                                          disabled={
+                                              context.wallet[context.walletIndex].assets[originTokenSelectedState]
+                                                  .contractAddress === token.contractAddress
+                                                  ? true
+                                                  : false
+                                          }
+                                          onClick={() => selectToken(index, token.contractAddress)}
+                                      >
+                                          <div className="token-icon">
+                                              <img src={`${token.iconUrl}`} alt="token-icon" key={index.iconUrl} />
+                                          </div>
+                                          <p key={token.symbol}>{token.symbol}</p>
+                                      </button>
+                                  );
+                              })
+                            : context.supportTokens.map((token: any, index: any) => {
+                                  return (
+                                      <button className="token" key={index} disabled>
+                                          <div className="token-icon">
+                                              <img src={`${token.iconUrl}`} alt="token-icon" key={index.iconUrl} />
+                                          </div>
+                                          <p key={token.symbol}>{token.symbol}</p>
+                                      </button>
+                                  );
+                              })}
                     </div>
                 </div>
             </div>

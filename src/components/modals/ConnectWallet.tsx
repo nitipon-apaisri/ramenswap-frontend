@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../../store/index";
+
 const ConnectWalletModal = () => {
     const context = useContext(AppContext);
     const [signInState, setSignInState] = useState(false);
@@ -7,16 +8,21 @@ const ConnectWalletModal = () => {
     const [ethAddress, setEthAddress] = useState("");
     const [walletPassword, setWalletPassword] = useState("");
     const connectWallet = () => {
-        const walletIndex = context.wallet.findIndex((wallet: any) =>
-            wallet.assets.find((eth: any) => eth.publicKey === ethAddress)
-        );
-        if (context.wallet[walletIndex].password === walletPassword) {
-            context.changeOriginTokenBalance(context.wallet[context.walletIndex].assets[context.originToken].balance);
-            context.changeWalletConnectState(true, walletIndex);
-            context.toggleConnectWallet();
-        } else {
-            console.log("Something went wrong");
-        }
+        context.signIn(ethAddress);
+        setTimeout(() => {
+            const walletIndex = context.wallet.findIndex((wallet: any) =>
+                wallet.assets.find((eth: any) => eth.publicKey === ethAddress)
+            );
+            if (context.wallet[walletIndex].password === walletPassword) {
+                context.changeOriginTokenBalance(
+                    context.wallet[context.walletIndex].assets[context.originToken].balance
+                );
+                context.changeWalletConnectState(true, walletIndex);
+                context.toggleConnectWallet();
+            } else {
+                console.log("Something went wrong");
+            }
+        }, 100);
     };
     const back = () => {
         setSignInState(false);

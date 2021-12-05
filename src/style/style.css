@@ -100,6 +100,28 @@ body .App .container .contents .swap-contents .swap-inputs .origin-token .main-c
   opacity: 0.1;
 }
 
+.choose-a-token, body .App .container .contents .swap-contents .swap-inputs .destination-token {
+  width: 100%;
+}
+.choose-a-token button, body .App .container .contents .swap-contents .swap-inputs .destination-token button {
+  border-radius: 12px;
+  display: flex;
+  padding: 10px 12px;
+  align-items: center;
+  background-color: #ff9b04;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 10px;
+}
+.choose-a-token button p, body .App .container .contents .swap-contents .swap-inputs .destination-token button p {
+  margin-right: 8px;
+  font-size: 14px;
+}
+.choose-a-token button img, body .App .container .contents .swap-contents .swap-inputs .destination-token button img {
+  width: 16px;
+}
+
 .tokenInput, body .App .container .contents .swap-contents .swap-inputs .destination-token, body .App .container .contents .swap-contents .swap-inputs .origin-token {
   margin: 0 0 6px 0;
   border-radius: 12px;
@@ -294,27 +316,6 @@ body .App .container .contents .swap-contents .swap-inputs .tranfer .tranfer-ico
 body .App .container .contents .swap-contents .swap-inputs .tranfer .tranfer-icon img {
   align-self: center;
   width: 8px;
-}
-body .App .container .contents .swap-contents .swap-inputs .destination-token .choose-a-token {
-  width: 100%;
-}
-body .App .container .contents .swap-contents .swap-inputs .destination-token .choose-a-token button {
-  border-radius: 12px;
-  display: flex;
-  padding: 10px 12px;
-  align-items: center;
-  background-color: #ff9b04;
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 10px;
-}
-body .App .container .contents .swap-contents .swap-inputs .destination-token .choose-a-token button p {
-  margin-right: 8px;
-  font-size: 14px;
-}
-body .App .container .contents .swap-contents .swap-inputs .destination-token .choose-a-token button img {
-  width: 16px;
 }
 body .App .container .contents .swap-contents .swap-inputs .swap-input-footer {
   display: flex;

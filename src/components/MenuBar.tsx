@@ -25,8 +25,10 @@ const Menu = () => {
     };
     useEffect(() => {
         if (context.walletConnectState)
-            setEthAddress(context.wallet[context.walletIndex].assets[context.walletIndex].publicKey);
-    }, [context.walletConnectState, context.wallet[context.walletIndex].assets, context.walletIndex]);
+            if (context.wallet.length !== 0) {
+                setEthAddress(context.wallet[context.walletIndex].assets[context.walletIndex].publicKey);
+            }
+    }, [context.walletConnectState, context.walletIndex, context.wallet]);
     const getActiveClass = (index: number, className: string) => (toggleState === index ? className : "");
 
     return (

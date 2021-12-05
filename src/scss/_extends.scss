@@ -101,6 +101,27 @@
         }
     }
 }
+.choose-a-token {
+    width: 100%;
+    button {
+        border-radius: 12px;
+        display: flex;
+        padding: 10px 12px;
+        align-items: center;
+        background-color: $strong-orange;
+        color: white;
+        border: none;
+        cursor: pointer;
+        box-shadow: rgb(0 0 0 / 8%) 0px 6px 10px;
+        p {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        img {
+            width: 16px;
+        }
+    }
+}
 //token-input
 .tokenInput {
     margin: 0 0 6px 0;
