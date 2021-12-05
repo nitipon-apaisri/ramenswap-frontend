@@ -11,7 +11,7 @@ const ConnectWalletModal = () => {
             wallet.assets.find((eth: any) => eth.publicKey === ethAddress)
         );
         if (context.wallet[walletIndex].password === walletPassword) {
-            context.changeOriginTokenBalance(context.mockWallet.assets[context.originToken].balance);
+            context.changeOriginTokenBalance(context.wallet[context.walletIndex].assets[context.originToken].balance);
             context.changeWalletConnectState(true, walletIndex);
             context.toggleConnectWallet();
         } else {

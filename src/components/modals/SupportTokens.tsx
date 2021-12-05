@@ -32,15 +32,15 @@ const Tokens = () => {
                             return (
                                 <button
                                     className={`token ${
-                                        context.mockWallet.assets[originTokenSelectedState].contractAddress ===
-                                        token.contractAddress
+                                        context.wallet[context.walletIndex].assets[originTokenSelectedState]
+                                            .contractAddress === token.contractAddress
                                             ? "selected"
                                             : ""
                                     }`}
                                     key={index}
                                     disabled={
-                                        context.mockWallet.assets[originTokenSelectedState].contractAddress ===
-                                        token.contractAddress
+                                        context.wallet[context.walletIndex].assets[originTokenSelectedState]
+                                            .contractAddress === token.contractAddress
                                             ? true
                                             : false
                                     }

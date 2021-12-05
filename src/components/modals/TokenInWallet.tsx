@@ -8,7 +8,7 @@ const AssetsInWallet = () => {
     };
     const selectToken = (index: number) => {
         context.changeOriginToken(index);
-        context.changeOriginTokenBalance(context.mockWallet.assets[index].balance);
+        context.changeOriginTokenBalance(context.wallet[context.walletIndex].assets[index].balance);
     };
     return (
         <div className="modal">
@@ -22,7 +22,7 @@ const AssetsInWallet = () => {
                     </div>
                     <hr className="modal-hr" />
                     <div className="token-list">
-                        {context.mockWallet.assets.map((token: any, index: any) => (
+                        {context.wallet[context.walletIndex].assets.map((token: any, index: any) => (
                             <div className="token" key={index} onClick={() => selectToken(index)}>
                                 <div className="token-icon">
                                     <img src={`${token.iconUrl}`} alt="token-icon" key={index.iconUrl} />

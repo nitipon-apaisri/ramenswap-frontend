@@ -27,7 +27,8 @@ const Swap = () => {
     };
 
     const swap = () => {
-        console.log("Swap");
+        context.changeOriginTokenBalance(originTokenBalance - originTokenState);
+        context.swapToken((originTokenState * originTokenCurrentPrice) / selectedTokenCurrentPrice);
     };
 
     const toggleSupportTokens = () => {
@@ -46,7 +47,7 @@ const Swap = () => {
         } else {
             setInsufficentState("Swap");
         }
-        setOriginTokenCurrentPrice(context.mockWallet.assets[context.originToken].currentPrice);
+        setOriginTokenCurrentPrice(context.wallet[context.walletIndex].assets[context.originToken].currentPrice);
         setSelectedTokenCurrentPrice(context.supportTokens[context.tokenSelectIndex].currentPrice);
         setTokenInWalletIndex(context.tokenSelectIndexInWallet);
         setOriginToken(context.originToken);
@@ -64,7 +65,8 @@ const Swap = () => {
         context.tokenSelectIndex,
         context.originToken,
         context.supportTokens,
-        context.mockWallet,
+        context.walletIndex,
+        context.wallet,
         originTokenState,
         originTokenBalance,
         selectTokenState,
@@ -82,11 +84,11 @@ const Swap = () => {
                         <div className="tokenSelect">
                             <button onClick={toggleWallet}>
                                 <img
-                                    src={context.mockWallet.assets[originToken].iconUrl}
+                                    src={context.wallet[context.walletIndex].assets[originToken].iconUrl}
                                     alt="token"
                                     className="tokenIcon"
                                 />
-                                <p>{context.mockWallet.assets[originToken].symbol}</p>
+                                <p>{context.wallet[context.walletIndex].assets[originToken].symbol}</p>
                                 <img src={CaretDown} alt="caret-down" className="caretDown" />
                             </button>
                         </div>
@@ -102,7 +104,7 @@ const Swap = () => {
                             {walletConnectState ? (
                                 <p>
                                     Balance: {originTokenBalance} {originTokenSymbol}
-                                    {context.mockWallet.assets[originToken].symbol}
+                                    {context.wallet[context.walletIndex].assets[originToken].symbol}
                                 </p>
                             ) : (
                                 <p></p>
@@ -113,7 +115,8 @@ const Swap = () => {
                                 <p>
                                     ≈
                                     {`$${
-                                        originTokenState * context.mockWallet.assets[context.originToken].currentPrice
+                                        originTokenState *
+                                        context.wallet[context.walletIndex].assets[context.originToken].currentPrice
                                     }`}
                                 </p>
                             ) : (
@@ -166,8 +169,11 @@ const Swap = () => {
                             {walletConnectState && selectTokenState ? (
                                 tokenSelectIndexInWallet !== -1 ? (
                                     <p>
-                                        Balance: {context.mockWallet.assets[tokenSelectIndexInWallet].balance}
-                                        {context.mockWallet.assets[tokenSelectIndexInWallet].symbol}
+                                        {`Balance: ${
+                                            context.wallet[context.walletIndex].assets[tokenSelectIndexInWallet].balance
+                                        } ${
+                                            context.wallet[context.walletIndex].assets[tokenSelectIndexInWallet].symbol
+                                        }`}
                                     </p>
                                 ) : (
                                     <p>Balance: 0</p>

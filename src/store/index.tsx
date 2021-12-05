@@ -32,7 +32,6 @@ const wallet = [
 const supportTokens: any = [];
 
 type ContextProps = {
-    mockWallet: any;
     wallet: any;
     walletIndex: any;
     supportTokens: any;
@@ -55,6 +54,7 @@ type ContextProps = {
     toggleWallet: any;
     changeOriginToken: any;
     checkTokenInWallet: any;
+    swapToken: any;
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
@@ -107,11 +107,13 @@ const AppProvider = (props: any) => {
         const token = wallet[0].assets.findIndex((r) => r.contractAddress === contractAddress);
         setTokenInWalletIndex(token);
     };
-    const mockWallet: object = wallet[0];
+    const swapToken = (swapAmount: number) => {
+        wallet[walletIndex].assets[originToken].balance = originTokenBalance;
+        wallet[walletIndex].assets[1].balance += swapAmount;
+    };
     return (
         <AppContext.Provider
             value={{
-                mockWallet,
                 wallet,
                 walletIndex,
                 supportTokens,
@@ -134,6 +136,7 @@ const AppProvider = (props: any) => {
                 toggleWallet,
                 changeOriginToken,
                 checkTokenInWallet,
+                swapToken,
             }}
         >
             {props.children}
