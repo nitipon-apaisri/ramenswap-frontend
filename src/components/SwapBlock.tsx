@@ -28,7 +28,7 @@ const Swap = () => {
 
     const swap = () => {
         context.changeOriginTokenBalance(originTokenBalance - originTokenState);
-        context.swapToken((originTokenState * originTokenCurrentPrice) / selectedTokenCurrentPrice);
+        context.swapToken((originTokenState * originTokenCurrentPrice) / selectedTokenCurrentPrice, originTokenState);
     };
 
     const toggleSupportTokens = () => {

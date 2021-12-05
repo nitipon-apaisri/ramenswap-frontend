@@ -105,8 +105,8 @@ body .App .container .contents .swap-contents .swap-inputs .origin-token .main-c
 }
 .choose-a-token button, body .App .container .contents .swap-contents .swap-inputs .destination-token button {
   border-radius: 12px;
-  display: flex;
   padding: 10px 12px;
+  display: flex;
   align-items: center;
   background-color: #ff9b04;
   color: white;
@@ -316,6 +316,9 @@ body .App .container .contents .swap-contents .swap-inputs .tranfer .tranfer-ico
 body .App .container .contents .swap-contents .swap-inputs .tranfer .tranfer-icon img {
   align-self: center;
   width: 8px;
+}
+body .App .container .contents .swap-contents .swap-inputs .destination-token .tokenSelect button {
+  color: black;
 }
 body .App .container .contents .swap-contents .swap-inputs .swap-input-footer {
   display: flex;

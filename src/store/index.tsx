@@ -49,6 +49,7 @@ const AppProvider = (props: any) => {
     const [tokenSelectIndexInWallet, setTokenInWalletIndex] = useState(-1);
     const [walletState, setWalletState] = useState(false);
     const [originToken, setOriginToken] = useState(Number);
+    const [selectedTokenContractAddress, setSelectedTokenContractAddress] = useState("");
     const changeOriginTokenBalance = (balance: number) => {
         setOriginTokenBalance(balance);
     };
@@ -77,14 +78,35 @@ const AppProvider = (props: any) => {
         setWalletState(!walletState);
     };
     const checkTokenInWallet = (contractAddress: string) => {
+        setSelectedTokenContractAddress(contractAddress);
         if (wallet.length !== 0) {
             const token = wallet[0].assets.findIndex((r: any) => r.contractAddress === contractAddress);
             setTokenInWalletIndex(token);
         }
     };
-    const swapToken = (swapAmount: number) => {
+    const swapToken = (swapAmount: number, originTokenInput: number) => {
         wallet[walletIndex].assets[originToken].balance = originTokenBalance;
         wallet[walletIndex].assets[1].balance += swapAmount;
+        const originTokenPublicKey = wallet[walletIndex].assets[originToken].publicKey;
+        setTimeout(() => {
+            axios({
+                method: "post",
+                url: "http://localhost:4200/transactions/swapToken",
+                headers: { "Content-Type": "application/json" },
+                data: {
+                    originTokenPublicKey: `${originTokenPublicKey}`,
+                    tokenContractAddress: `${selectedTokenContractAddress}`,
+                    originTokenInput: originTokenInput,
+                    swapAmount: swapAmount,
+                },
+            })
+                .then((r) => {
+                    console.log(r);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }, 500);
     };
     const signIn = (tokenPublicKey: string) => {
         axios

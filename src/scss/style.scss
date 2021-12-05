@@ -170,6 +170,11 @@ body {
                         .destination-token {
                             @extend .tokenInput;
                             @extend .choose-a-token;
+                            .tokenSelect {
+                                button {
+                                    color: black;
+                                }
+                            }
                         }
                         .swap-input-footer {
                             display: flex;
