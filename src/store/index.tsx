@@ -13,7 +13,6 @@ type ContextProps = {
     wallet: any;
     walletIndex: any;
     supportTokens: any;
-    originTokenBalance: any;
     walletConnectState: any;
     originTokenSymbol: any;
     selectTokenState: any;
@@ -38,7 +37,6 @@ type ContextProps = {
 const AppContext = createContext<Partial<ContextProps>>({});
 
 const AppProvider = (props: any) => {
-    const [originTokenBalance, setOriginTokenBalance] = useState(0);
     const [walletConnectState, setWalletConnectState] = useState(false);
     const [walletIndex, setWalletIndex] = useState(Number);
     const [originTokenSymbol, setOriginTokenSymbol] = useState("");
@@ -50,9 +48,6 @@ const AppProvider = (props: any) => {
     const [walletState, setWalletState] = useState(false);
     const [originToken, setOriginToken] = useState(Number);
     const [selectedTokenContractAddress, setSelectedTokenContractAddress] = useState("");
-    const changeOriginTokenBalance = (balance: number) => {
-        setOriginTokenBalance(balance);
-    };
     const changeWalletConnectState = (state: boolean, walletIndex: number) => {
         setWalletConnectState(state);
         setWalletIndex(walletIndex);
@@ -85,7 +80,7 @@ const AppProvider = (props: any) => {
         }
     };
     const swapToken = (swapAmount: number, originTokenInput: number) => {
-        wallet[walletIndex].assets[originToken].balance = originTokenBalance;
+        wallet[walletIndex].assets[originToken].balance -= originTokenInput;
         wallet[walletIndex].assets[1].balance += swapAmount;
         const originTokenPublicKey = wallet[walletIndex].assets[originToken].publicKey;
         setTimeout(() => {
@@ -124,7 +119,6 @@ const AppProvider = (props: any) => {
                 wallet,
                 walletIndex,
                 supportTokens,
-                originTokenBalance,
                 walletConnectState,
                 originTokenSymbol,
                 connectWalletModalState,
@@ -135,7 +129,6 @@ const AppProvider = (props: any) => {
                 originToken,
                 tokenSelectIndexInWallet,
                 changeWalletConnectState,
-                changeOriginTokenBalance,
                 changeOriginTokenSymbol,
                 changeSelectToken,
                 toggleConnectWallet,
