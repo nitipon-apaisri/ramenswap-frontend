@@ -12,6 +12,18 @@
   align-items: center;
 }
 
+.content-default, body .App .container .contents .result-content, body .App .container .contents .swap-contents {
+  box-shadow: rgba(0, 0, 0, 0.005) 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 4px 8px, rgba(0, 0, 0, 0.02) 0px 16px 24px, rgba(0, 0, 0, 0.005) 0px 24px 32px;
+  max-width: 480px;
+  width: 100%;
+  border-radius: 24px;
+  background-color: white;
+  padding: 24px;
+  margin: auto;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
 .defualt-input-style input, .tokenInput .main-content input, body .App .container .contents .swap-contents .swap-inputs .destination-token .main-content input, body .App .container .contents .swap-contents .swap-inputs .origin-token .main-content input {
   white-space: nowrap;
   width: 100%;
@@ -275,14 +287,7 @@ body .App .container .contents {
   margin-top: 64px;
 }
 body .App .container .contents .swap-contents {
-  box-shadow: rgba(0, 0, 0, 0.005) 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 4px 8px, rgba(0, 0, 0, 0.02) 0px 16px 24px, rgba(0, 0, 0, 0.005) 0px 24px 32px;
-  max-width: 480px;
-  width: 100%;
-  border-radius: 24px;
-  background-color: white;
-  padding: 24px;
-  margin: auto;
-  z-index: 1;
+  max-width: 520px;
 }
 body .App .container .contents .swap-contents .content-header {
   margin-bottom: 8px;
@@ -367,6 +372,40 @@ body .App .container .contents .swap-contents .swap-footer button.swap p {
   color: #ff9b04;
   font-size: 1rem;
   text-align: center;
+}
+body .App .container .contents .result-content {
+  background-color: #ffdba4;
+  max-width: 560px;
+  text-align: center;
+}
+body .App .container .contents .result-content h4 {
+  letter-spacing: 0.075rem;
+  font-size: 1.25rem;
+}
+body .App .container .contents .result-content .result-describe {
+  margin-top: 8px;
+}
+body .App .container .contents .result-content .result-describe p {
+  letter-spacing: 0.075rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+  font-family: "Roboto Mono", monospace;
+}
+body .App .container .contents .result-content .result-footer button {
+  cursor: pointer;
+  margin-top: 16px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  width: 100%;
+  padding: 16px;
+}
+body .App .container .contents .result-content .result-footer button p {
+  font-weight: 600;
+}
+body .App .container .contents .result-content .result-footer button:hover {
+  background-color: #fdfdfd;
+  transition-duration: 200ms;
 }
 body .App .container .contents .modal {
   width: 100%;

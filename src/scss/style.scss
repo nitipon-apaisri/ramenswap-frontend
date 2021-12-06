@@ -123,15 +123,8 @@ body {
             .contents {
                 margin-top: 64px;
                 .swap-contents {
-                    //prettier-ignore
-                    box-shadow: rgb(0 0 0 / 0.5%) 0px 0px 1px, rgb(0 0 0 / 2%) 0px 4px 8px, rgb(0 0 0 / 2%) 0px 16px 24px, rgb(0 0 0 / 0.5%) 0px 24px 32px;
-                    max-width: 480px;
-                    width: 100%;
-                    border-radius: 24px;
-                    background-color: white;
-                    padding: 24px;
-                    margin: auto;
-                    z-index: 1;
+                    @extend .content-default;
+                    max-width: 520px;
                     .content-header {
                         h4 {
                             font-weight: 500;
@@ -228,6 +221,43 @@ body {
                                 font-size: 1rem;
                                 text-align: center;
                             }
+                        }
+                    }
+                }
+                .result-content {
+                    @extend .content-default;
+                    background-color: $soft-orange;
+                    max-width: 560px;
+                    text-align: center;
+                    h4 {
+                        letter-spacing: 0.075rem;
+                        font-size: 1.25rem;
+                    }
+                    .result-describe {
+                        margin-top: 8px;
+                        p {
+                            letter-spacing: 0.075rem;
+                            font-weight: 500;
+                            font-size: 0.75rem;
+                            font-family: "Roboto Mono", monospace;
+                        }
+                    }
+                    .result-footer {
+                        button {
+                            cursor: pointer;
+                            margin-top: 16px;
+                            border: none;
+                            background-color: #f2f2f2;
+                            border-radius: 12px;
+                            width: 100%;
+                            padding: 16px;
+                            p {
+                                font-weight: 600;
+                            }
+                        }
+                        button:hover {
+                            background-color: #fdfdfd;
+                            transition-duration: 200ms;
                         }
                     }
                 }

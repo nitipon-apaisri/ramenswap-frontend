@@ -13,6 +13,18 @@
     align-items: center;
 }
 //default-styles
+.content-default {
+    //prettier-ignore
+    box-shadow: rgb(0 0 0 / 0.5%) 0px 0px 1px, rgb(0 0 0 / 2%) 0px 4px 8px, rgb(0 0 0 / 2%) 0px 16px 24px, rgb(0 0 0 / 0.5%) 0px 24px 32px;
+    max-width: 480px;
+    width: 100%;
+    border-radius: 24px;
+    background-color: white;
+    padding: 24px;
+    margin: auto;
+    z-index: 1;
+    box-sizing: border-box;
+}
 .defualt-input-style {
     input {
         white-space: nowrap;

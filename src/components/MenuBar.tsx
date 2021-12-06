@@ -19,9 +19,7 @@ const Menu = () => {
         setWalletOptionState(!walletOptionsState);
     };
     const signOut = () => {
-        setEthAddress("");
-        setWalletOptionState(!walletOptionsState);
-        context.changeWalletConnectState(false);
+        window.location.reload();
     };
     useEffect(() => {
         if (context.walletConnectState)

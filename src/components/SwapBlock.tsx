@@ -54,7 +54,6 @@ const Swap = () => {
     }, [
         context.tokenSelectIndexInWallet,
         context.walletConnectState,
-        context.originTokenSymbol,
         context.selectTokenState,
         context.tokenSelectIndex,
         context.originToken,
@@ -74,7 +73,7 @@ const Swap = () => {
             <div className="swap-inputs">
                 <div className="origin-token">
                     <div className="main-content">
-                        {context.wallet.length !== 0 ? (
+                        {context.wallet.length !== 0 && context.walletConnectState ? (
                             <div className="tokenSelect">
                                 <button onClick={toggleWallet}>
                                     <img

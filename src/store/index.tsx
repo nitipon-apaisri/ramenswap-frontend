@@ -14,17 +14,16 @@ type ContextProps = {
     walletIndex: any;
     supportTokens: any;
     walletConnectState: any;
-    originTokenSymbol: any;
     selectTokenState: any;
     tokenSelectIndex: any;
     walletState: any;
     originToken: any;
+    swapBlockState: any;
     tokenSelectIndexInWallet: any;
     connectWalletModalState: any;
     supportTokenModalState: any;
     changeOriginTokenBalance: any;
     changeWalletConnectState: any;
-    changeOriginTokenSymbol: any;
     changeSelectToken: any;
     toggleConnectWallet: any;
     toggleSupportTokens: any;
@@ -33,13 +32,15 @@ type ContextProps = {
     checkTokenInWallet: any;
     swapToken: any;
     signIn: any;
+    swapResultState: any;
+    transaction: any;
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
 const AppProvider = (props: any) => {
     const [walletConnectState, setWalletConnectState] = useState(false);
     const [walletIndex, setWalletIndex] = useState(Number);
-    const [originTokenSymbol, setOriginTokenSymbol] = useState("");
+    const [swapBlockState, setSwapBlockState] = useState(true);
     const [connectWalletModalState, setConnectWalletModalState] = useState(false);
     const [supportTokenModalState, setSupportTokenModalState] = useState(false);
     const [selectTokenState, setSelectTokenState] = useState(false);
@@ -48,12 +49,14 @@ const AppProvider = (props: any) => {
     const [walletState, setWalletState] = useState(false);
     const [originToken, setOriginToken] = useState(Number);
     const [selectedTokenContractAddress, setSelectedTokenContractAddress] = useState("");
+    const [transaction, setTransaction] = useState({
+        swapAmount: 0,
+        originAmount: 0,
+    });
+    const [swapResultState, setSwapResultState] = useState(false);
     const changeWalletConnectState = (state: boolean, walletIndex: number) => {
         setWalletConnectState(state);
         setWalletIndex(walletIndex);
-    };
-    const changeOriginTokenSymbol = (symbol: string) => {
-        setOriginTokenSymbol(symbol);
     };
     const toggleConnectWallet = () => {
         setConnectWalletModalState(!connectWalletModalState);
@@ -96,7 +99,11 @@ const AppProvider = (props: any) => {
                 },
             })
                 .then((r) => {
-                    console.log(r);
+                    setSwapBlockState(false);
+                    if (r.data.msg === "Swap Successfull") {
+                        setSwapResultState(true);
+                        setTransaction({ ...transaction, swapAmount: swapAmount, originAmount: originTokenInput });
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
@@ -120,7 +127,6 @@ const AppProvider = (props: any) => {
                 walletIndex,
                 supportTokens,
                 walletConnectState,
-                originTokenSymbol,
                 connectWalletModalState,
                 supportTokenModalState,
                 selectTokenState,
@@ -128,8 +134,10 @@ const AppProvider = (props: any) => {
                 walletState,
                 originToken,
                 tokenSelectIndexInWallet,
+                swapResultState,
+                swapBlockState,
+                transaction,
                 changeWalletConnectState,
-                changeOriginTokenSymbol,
                 changeSelectToken,
                 toggleConnectWallet,
                 toggleSupportTokens,
