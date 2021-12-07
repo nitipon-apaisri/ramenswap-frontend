@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import { render } from "react-dom";
 import Main from "./App";
 import { AppProvider } from "./store/index";
@@ -7,7 +8,9 @@ import reportWebVitals from "./reportWebVitals";
 const App = () => {
     return (
         <AppProvider>
-            <Main />
+            <BrowserRouter>
+                <Main />
+            </BrowserRouter>
         </AppProvider>
     );
 };

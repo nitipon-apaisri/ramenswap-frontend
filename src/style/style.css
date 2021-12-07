@@ -391,19 +391,22 @@ body .App .container .contents .result-content .result-describe p {
   font-size: 0.75rem;
   font-family: "Roboto Mono", monospace;
 }
-body .App .container .contents .result-content .result-footer button {
+body .App .container .contents .result-content .result-footer {
+  margin-top: 32px;
+}
+body .App .container .contents .result-content .result-footer a {
   cursor: pointer;
-  margin-top: 16px;
   border: none;
   background-color: #f2f2f2;
   border-radius: 12px;
   width: 100%;
-  padding: 16px;
-}
-body .App .container .contents .result-content .result-footer button p {
+  padding: 12px 24px;
   font-weight: 600;
+  text-decoration: none;
+  color: #363636;
+  font-size: 0.75rem;
 }
-body .App .container .contents .result-content .result-footer button:hover {
+body .App .container .contents .result-content .result-footer a:hover {
   background-color: #fdfdfd;
   transition-duration: 200ms;
 }
