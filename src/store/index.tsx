@@ -35,6 +35,9 @@ type ContextProps = {
     swapResultState: any;
     transaction: any;
     createWallet: any;
+    setSwapBlockState: any;
+    setSwapResultState: any;
+    setSelectTokenState: any;
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
@@ -88,7 +91,6 @@ const AppProvider = (props: any) => {
     };
     const swapToken = (swapAmount: number, originTokenInput: number) => {
         wallet[walletIndex].assets[originToken].balance -= originTokenInput;
-        wallet[walletIndex].assets[1].balance += swapAmount;
         const originTokenPublicKey = wallet[walletIndex].assets[originToken].publicKey;
         setTimeout(() => {
             axios({
@@ -108,6 +110,15 @@ const AppProvider = (props: any) => {
                         setSwapResultState(true);
                         setTransaction({ ...transaction, swapAmount: swapAmount, originAmount: originTokenInput });
                     }
+                    wallet.shift();
+                    axios
+                        .get(`http://localhost:4200/wallets/${originTokenPublicKey}`)
+                        .then((r) => {
+                            wallet.push(r.data.wallet);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                 })
                 .catch((error) => {
                     console.log(error);
@@ -173,6 +184,9 @@ const AppProvider = (props: any) => {
                 swapToken,
                 signIn,
                 createWallet,
+                setSwapBlockState,
+                setSwapResultState,
+                setSelectTokenState,
             }}
         >
             {props.children}

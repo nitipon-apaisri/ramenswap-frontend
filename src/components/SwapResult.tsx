@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import CheckCircle from "../assets/CheckCircle.svg";
 const SwapResult = () => {
     const context = useContext(AppContext);
-    // const close = () => {
-    //     window.location.reload();
-    // };
+    const setDefault = () => {
+        context.setSwapBlockState(true);
+        context.setSwapResultState(false);
+        context.setSelectTokenState(false);
+    };
     return (
         <div className="result-content">
             <img src={CheckCircle} alt="status" />
@@ -17,7 +19,10 @@ const SwapResult = () => {
                 } to ${context.transaction.swapAmount} ${context.supportTokens[context.tokenSelectIndex].symbol}`}</p>
             </div>
             <div className="result-footer">
-                <Link to={`/wallet/${context.wallet[context.walletIndex].assets[context.originToken].publicKey}`}>
+                <Link
+                    to={`/wallet/${context.wallet[context.walletIndex].assets[context.originToken].publicKey}`}
+                    onClick={setDefault}
+                >
                     To my wallet
                 </Link>
             </div>
