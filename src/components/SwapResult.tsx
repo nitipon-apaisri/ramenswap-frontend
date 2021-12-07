@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AppContext } from "../store/index";
-import { Link } from "react-router-dom";
 import CheckCircle from "../assets/CheckCircle.svg";
 const SwapResult = () => {
     const context = useContext(AppContext);
@@ -19,12 +18,9 @@ const SwapResult = () => {
                 } to ${context.transaction.swapAmount} ${context.supportTokens[context.tokenSelectIndex].symbol}`}</p>
             </div>
             <div className="result-footer">
-                <Link
-                    to={`/wallet/${context.wallet[context.walletIndex].assets[context.originToken].publicKey}`}
-                    onClick={setDefault}
-                >
-                    To my wallet
-                </Link>
+                <button onClick={setDefault}>
+                    <p>Close</p>
+                </button>
             </div>
         </div>
     );

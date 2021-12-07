@@ -244,21 +244,21 @@ body {
                     }
                     .result-footer {
                         margin-top: 32px;
-                        a {
+
+                        button:hover {
+                            background-color: #fdfdfd;
+                            transition-duration: 200ms;
+                        }
+                        button {
                             cursor: pointer;
                             border: none;
                             background-color: #f2f2f2;
                             border-radius: 12px;
-                            width: 100%;
                             padding: 12px 24px;
                             font-weight: 600;
                             text-decoration: none;
                             color: #363636;
                             font-size: 0.75rem;
-                        }
-                        a:hover {
-                            background-color: #fdfdfd;
-                            transition-duration: 200ms;
                         }
                     }
                 }

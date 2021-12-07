@@ -74,6 +74,16 @@ const AppProvider = (props: any) => {
     const toggleWallet = () => {
         setWalletState(!walletState);
     };
+    const getWallet = (publickKey: string) => {
+        axios
+            .get(`http://localhost:4200/wallets/${publickKey}`)
+            .then((r) => {
+                wallet.push(r.data.wallet);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
     const changeSelectToken = (index: number) => {
         setTokenSelectIndex(index);
         setSelectTokenState(true);
@@ -111,14 +121,7 @@ const AppProvider = (props: any) => {
                         setTransaction({ ...transaction, swapAmount: swapAmount, originAmount: originTokenInput });
                     }
                     wallet.shift();
-                    axios
-                        .get(`http://localhost:4200/wallets/${originTokenPublicKey}`)
-                        .then((r) => {
-                            wallet.push(r.data.wallet);
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        });
+                    getWallet(originTokenPublicKey);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -126,14 +129,7 @@ const AppProvider = (props: any) => {
         }, 500);
     };
     const signIn = (tokenPublicKey: string) => {
-        axios
-            .get(`http://localhost:4200/wallets/${tokenPublicKey}`)
-            .then((r) => {
-                wallet.push(r.data.wallet);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        getWallet(tokenPublicKey);
     };
 
     const createWallet = (walletPassword: string) => {
