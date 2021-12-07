@@ -19,6 +19,7 @@ type ContextProps = {
     walletState: any;
     originToken: any;
     swapBlockState: any;
+    signInInfo: any;
     tokenSelectIndexInWallet: any;
     connectWalletModalState: any;
     supportTokenModalState: any;
@@ -33,6 +34,7 @@ type ContextProps = {
     signIn: any;
     swapResultState: any;
     transaction: any;
+    createWallet: any;
 };
 const AppContext = createContext<Partial<ContextProps>>({});
 
@@ -51,6 +53,9 @@ const AppProvider = (props: any) => {
     const [transaction, setTransaction] = useState({
         swapAmount: 0,
         originAmount: 0,
+    });
+    const [signInInfo, setSingInInfo] = useState({
+        ethPublicKey: "",
     });
     const [swapResultState, setSwapResultState] = useState(false);
     const changeWalletConnectState = (state: boolean, walletIndex: number) => {
@@ -119,6 +124,27 @@ const AppProvider = (props: any) => {
                 console.log(err);
             });
     };
+
+    const createWallet = (walletPassword: string) => {
+        axios({
+            method: "POST",
+            url: "http://localhost:4200/wallets/create",
+            data: {
+                password: walletPassword,
+            },
+        })
+            .then((r) => {
+                if (r.data.msg === "Wallet created!") {
+                    setSingInInfo({
+                        ...signInInfo,
+                        ethPublicKey: r.data.wallet.assets[0].publicKey,
+                    });
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
     return (
         <AppContext.Provider
             value={{
@@ -136,6 +162,7 @@ const AppProvider = (props: any) => {
                 swapResultState,
                 swapBlockState,
                 transaction,
+                signInInfo,
                 changeWalletConnectState,
                 changeSelectToken,
                 toggleConnectWallet,
@@ -145,6 +172,7 @@ const AppProvider = (props: any) => {
                 checkTokenInWallet,
                 swapToken,
                 signIn,
+                createWallet,
             }}
         >
             {props.children}

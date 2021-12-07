@@ -490,6 +490,20 @@ body .App .container .contents .modal .connect-wallet-modal .wallet-actions .foo
   background-color: #1a1a1a;
   transition-duration: 300ms;
 }
+body .App .container .contents .modal .connect-wallet-modal .wallet-actions .footer button.create-wallet-button {
+  border: none;
+  cursor: pointer;
+  background-color: #ffdba4;
+  padding: 16px;
+  color: #ff9b04;
+  max-width: 140px;
+  border-radius: 8px;
+}
+body .App .container .contents .modal .connect-wallet-modal .wallet-actions .footer button.create-wallet-button:hover {
+  background-color: #fdce87;
+  color: #ff9900;
+  transition-duration: 300ms;
+}
 body .App .container .contents .modal .connect-wallet-modal .wallet-actions .footer .back-button {
   background-color: transparent;
   color: #363636;
@@ -497,6 +511,36 @@ body .App .container .contents .modal .connect-wallet-modal .wallet-actions .foo
 }
 body .App .container .contents .modal .connect-wallet-modal .wallet-actions .footer .back-button:hover {
   color: #141414;
+}
+body .App .container .contents .modal .connect-wallet-modal .wallet-info .wallet-public-key {
+  margin: 16px 0;
+  padding: 24px;
+  border-radius: 16px;
+  background-color: #f1f1f1;
+}
+body .App .container .contents .modal .connect-wallet-modal .wallet-info .wallet-public-key p {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+body .App .container .contents .modal .connect-wallet-modal .wallet-info .footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+body .App .container .contents .modal .connect-wallet-modal .wallet-info .footer button.confirm-button {
+  border: none;
+  cursor: pointer;
+  background-color: #ffdba4;
+  padding: 16px;
+  color: #ff9b04;
+  max-width: 140px;
+  border-radius: 8px;
+}
+body .App .container .contents .modal .connect-wallet-modal .wallet-info .footer button.confirm-button:hover {
+  background-color: #fdce87;
+  color: #ff9900;
+  transition-duration: 300ms;
 }
 body .App .container .contents .modal .support-token-modal {
   margin-top: -200px;
