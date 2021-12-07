@@ -8,7 +8,6 @@ const AssetsInWallet = () => {
     };
     const selectToken = (index: number) => {
         context.changeOriginToken(index);
-        context.changeOriginTokenBalance(context.wallet[context.walletIndex].assets[index].balance);
     };
     return (
         <div className="modal">

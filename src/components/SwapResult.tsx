@@ -11,13 +11,11 @@ const SwapResult = () => {
         <div className="result-content">
             <img src={CheckCircle} alt="status" />
             <h4>Transansaction Submitted</h4>
-            {/* <div className="result-describe">
+            <div className="result-describe">
                 <p>{`Swap: ${context.transaction.originAmount} ${
                     context.wallet[context.walletIndex].assets[context.originToken].symbol
-                } to ${context.transaction.swapAmount} ${
-                    context.wallet[context.walletIndex].assets[context.tokenSelectIndexInWallet].symbol
-                }`}</p>
-            </div> */}
+                } to ${context.transaction.swapAmount} ${context.supportTokens[context.tokenSelectIndex].symbol}`}</p>
+            </div>
             <div className="result-footer">
                 <button onClick={close}>
                     <p>Close</p>

@@ -22,7 +22,6 @@ type ContextProps = {
     tokenSelectIndexInWallet: any;
     connectWalletModalState: any;
     supportTokenModalState: any;
-    changeOriginTokenBalance: any;
     changeWalletConnectState: any;
     changeSelectToken: any;
     toggleConnectWallet: any;
