@@ -28,7 +28,7 @@
   font-size: 0.75rem;
 }
 
-.content-default, body .App .container .user-wallet-contents .contents, body .App .container .contents .result-content, body .App .container .contents .swap-contents {
+.content-default, body .App .container .user-wallet-contents .contents .tables .assets, body .App .container .user-wallet-contents .contents .tables .transactions, body .App .container .user-wallet-contents .contents .overview, body .App .container .contents .result-content, body .App .container .contents .swap-contents {
   box-shadow: rgba(0, 0, 0, 0.005) 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 4px 8px, rgba(0, 0, 0, 0.02) 0px 16px 24px, rgba(0, 0, 0, 0.005) 0px 24px 32px;
   max-width: 480px;
   width: 100%;
@@ -568,7 +568,7 @@ body .App .container .user-wallet-contents header button {
 body .App .container .user-wallet-contents header button:hover {
   background-color: #fcfcfc;
 }
-body .App .container .user-wallet-contents .contents {
+body .App .container .user-wallet-contents .contents .overview {
   max-width: 100%;
   margin: 40px auto;
   box-sizing: border-box;
@@ -603,6 +603,78 @@ body .App .container .user-wallet-contents .contents .overview .container .tva {
 }
 body .App .container .user-wallet-contents .contents .overview .container .tha {
   background-color: #ffdba4;
+}
+body .App .container .user-wallet-contents .contents .tables {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+body .App .container .user-wallet-contents .contents .tables hr {
+  background-color: #ededed;
+  height: 1px;
+  border: none;
+}
+body .App .container .user-wallet-contents .contents .tables .transactions {
+  max-width: 906px;
+  box-sizing: border-box;
+  padding: 24px;
+  height: auto;
+  height: 400px;
+  max-height: 400px;
+}
+body .App .container .user-wallet-contents .contents .tables .transactions .transactions-wrapper {
+  text-align: center;
+  margin-top: 120px;
+  color: #c2c2c2;
+}
+body .App .container .user-wallet-contents .contents .tables .assets {
+  max-width: 450px;
+  box-sizing: border-box;
+  padding: 24px;
+  height: 400px;
+}
+body .App .container .user-wallet-contents .contents .tables .assets p,
+body .App .container .user-wallet-contents .contents .tables .assets h4 {
+  font-weight: 500;
+  letter-spacing: 0.05rem;
+  font-size: 0.75rem;
+}
+body .App .container .user-wallet-contents .contents .tables .assets .table-head {
+  display: flex;
+  justify-content: space-between;
+}
+body .App .container .user-wallet-contents .contents .tables .assets .assets-wrapper {
+  max-height: 290px;
+  overflow: scroll;
+}
+body .App .container .user-wallet-contents .contents .tables .assets .assets-wrapper .assets-in-wallet {
+  display: flex;
+  margin: 8px 0;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+body .App .container .user-wallet-contents .contents .tables .assets .assets-wrapper .assets-in-wallet .asset-name {
+  display: flex;
+  align-items: center;
+}
+body .App .container .user-wallet-contents .contents .tables .assets .assets-wrapper .assets-in-wallet .asset-name img {
+  width: 24px;
+  margin: 0 8px 0 0;
+}
+body .App .container .user-wallet-contents .contents .tables .assets .assets-wrapper::-webkit-scrollbar {
+  width: 0;
+}
+body .App .container .user-wallet-contents .contents .tables .assets .assets-wrapper::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+body .App .container .user-wallet-contents .contents .tables .assets .assets-wrapper::-webkit-scrollbar-track {
+  height: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
