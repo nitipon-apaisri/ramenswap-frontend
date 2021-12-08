@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/ramen.png";
 import ethLogo from "../assets/eth.svg";
 import otherIcon from "../assets/cicrle.svg";
@@ -8,6 +9,7 @@ const Menu = () => {
     const [toggleState, setToggleState] = useState(1);
     const [ethAddress, setEthAddress] = useState("");
     const [walletOptionsState, setWalletOptionState] = useState(false);
+    const navigate = useNavigate();
     const toggleTab = (index: number) => {
         setToggleState(index);
     };
@@ -17,6 +19,9 @@ const Menu = () => {
     };
     const toggleWalletOption = () => {
         setWalletOptionState(!walletOptionsState);
+    };
+    const toWallet = () => {
+        navigate(`wallet/${ethAddress}`);
     };
     const signOut = () => {
         window.location.reload();
@@ -64,8 +69,8 @@ const Menu = () => {
                                 <button onClick={toggleWalletOption} className="connected start-option">
                                     <p>{ethAddress}</p>
                                 </button>
-                                <button className="connected middle-option">
-                                    <p>Tokens</p>
+                                <button className="connected middle-option" onClick={toWallet}>
+                                    <p>Wallet</p>
                                 </button>
                                 <button onClick={signOut} className="connected end-option">
                                     <p>Sign Out</p>
