@@ -12,7 +12,23 @@
   align-items: center;
 }
 
-.content-default, body .App .container .contents .result-content, body .App .container .contents .swap-contents {
+.button-default button:hover, body .App .container .user-wallet-contents header button:hover, body .App .container .contents .result-content .result-footer button:hover {
+  background-color: #fdfdfd;
+  transition-duration: 200ms;
+}
+.button-default button, body .App .container .user-wallet-contents header button, body .App .container .contents .result-content .result-footer button {
+  cursor: pointer;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #363636;
+  font-size: 0.75rem;
+}
+
+.content-default, body .App .container .user-wallet-contents .contents, body .App .container .contents .result-content, body .App .container .contents .swap-contents {
   box-shadow: rgba(0, 0, 0, 0.005) 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 4px 8px, rgba(0, 0, 0, 0.02) 0px 16px 24px, rgba(0, 0, 0, 0.005) 0px 24px 32px;
   max-width: 480px;
   width: 100%;
@@ -394,21 +410,6 @@ body .App .container .contents .result-content .result-describe p {
 body .App .container .contents .result-content .result-footer {
   margin-top: 32px;
 }
-body .App .container .contents .result-content .result-footer button:hover {
-  background-color: #fdfdfd;
-  transition-duration: 200ms;
-}
-body .App .container .contents .result-content .result-footer button {
-  cursor: pointer;
-  border: none;
-  background-color: #f2f2f2;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #363636;
-  font-size: 0.75rem;
-}
 body .App .container .contents .modal {
   width: 100%;
   top: 0;
@@ -554,6 +555,54 @@ body .App .container .contents .modal .support-token-modal .selected {
 body .App .container .contents .modal .tokens-in-wallet-modal {
   margin-top: -200px;
   width: 480px;
+}
+body .App .container .user-wallet-contents {
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 24px;
+}
+body .App .container .user-wallet-contents header button {
+  background-color: #ffffff;
+}
+body .App .container .user-wallet-contents header button:hover {
+  background-color: #fcfcfc;
+}
+body .App .container .user-wallet-contents .contents {
+  max-width: 100%;
+  margin: 40px auto;
+  box-sizing: border-box;
+}
+body .App .container .user-wallet-contents .contents .overview .container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+body .App .container .user-wallet-contents .contents .overview .container .display-block {
+  box-sizing: border-box;
+  width: 432px;
+  max-width: 432px;
+  padding: 24px;
+  border-radius: 24px;
+}
+body .App .container .user-wallet-contents .contents .overview .container .display-block hr {
+  border: 2px solid #000000;
+}
+body .App .container .user-wallet-contents .contents .overview .container .display-block h4 {
+  letter-spacing: 0.025rem;
+  font-weight: 600;
+}
+body .App .container .user-wallet-contents .contents .overview .container .display-block .number {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 0.05rem;
+}
+body .App .container .user-wallet-contents .contents .overview .container .tva {
+  background-color: #ffb342;
+}
+body .App .container .user-wallet-contents .contents .overview .container .tha {
+  background-color: #ffdba4;
 }
 
 /*# sourceMappingURL=style.css.map */

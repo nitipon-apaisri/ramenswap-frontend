@@ -13,6 +13,23 @@
     align-items: center;
 }
 //default-styles
+.button-default {
+    button:hover {
+        background-color: #fdfdfd;
+        transition-duration: 200ms;
+    }
+    button {
+        cursor: pointer;
+        border: none;
+        background-color: #f2f2f2;
+        border-radius: 12px;
+        padding: 12px 24px;
+        font-weight: 600;
+        text-decoration: none;
+        color: #363636;
+        font-size: 0.75rem;
+    }
+}
 .content-default {
     //prettier-ignore
     box-shadow: rgb(0 0 0 / 0.5%) 0px 0px 1px, rgb(0 0 0 / 2%) 0px 4px 8px, rgb(0 0 0 / 2%) 0px 16px 24px, rgb(0 0 0 / 0.5%) 0px 24px 32px;
