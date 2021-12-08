@@ -413,6 +413,35 @@ body {
                         background-color: #fcfcfc;
                     }
                 }
+                .announcment {
+                    @extend .content-default;
+                    max-width: 1440px;
+                    height: 720px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 80px;
+                    .content {
+                        text-align: center;
+                        @extend .button-default;
+                        button {
+                            @extend .swap-button-default;
+                            width: auto;
+                            background-color: $soft-orange;
+                            margin-top: 16px;
+                            color: $strong-orange;
+                            p {
+                                font-size: 1rem;
+                                text-align: center;
+                            }
+                        }
+                        button:hover {
+                            background-color: $soft-orange-hover;
+                            color: $strong-orange-hover;
+                            transition-duration: 200ms;
+                        }
+                    }
+                }
                 .contents {
                     .overview {
                         @extend .content-default;

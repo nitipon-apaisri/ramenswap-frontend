@@ -74,6 +74,7 @@ const AppProvider = (props: any) => {
     const toggleWallet = () => {
         setWalletState(!walletState);
     };
+
     const getWallet = (publickKey: string) => {
         axios
             .get(`http://localhost:4200/wallets/${publickKey}`)
@@ -129,7 +130,9 @@ const AppProvider = (props: any) => {
         }, 500);
     };
     const signIn = (tokenPublicKey: string) => {
-        getWallet(tokenPublicKey);
+        if (wallet.length === 0) {
+            getWallet(tokenPublicKey);
+        }
     };
 
     const createWallet = (walletPassword: string) => {

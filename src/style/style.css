@@ -12,11 +12,11 @@
   align-items: center;
 }
 
-.button-default button:hover, body .App .container .user-wallet-contents header button:hover, body .App .container .contents .result-content .result-footer button:hover {
+.button-default button:hover, body .App .container .user-wallet-contents .announcment .content button:hover, body .App .container .user-wallet-contents header button:hover, body .App .container .contents .result-content .result-footer button:hover {
   background-color: #fdfdfd;
   transition-duration: 200ms;
 }
-.button-default button, body .App .container .user-wallet-contents header button, body .App .container .contents .result-content .result-footer button {
+.button-default button, body .App .container .user-wallet-contents .announcment .content button, body .App .container .user-wallet-contents header button, body .App .container .contents .result-content .result-footer button {
   cursor: pointer;
   border: none;
   background-color: #f2f2f2;
@@ -28,7 +28,7 @@
   font-size: 0.75rem;
 }
 
-.content-default, body .App .container .user-wallet-contents .contents .tables .assets, body .App .container .user-wallet-contents .contents .tables .transactions, body .App .container .user-wallet-contents .contents .overview, body .App .container .contents .result-content, body .App .container .contents .swap-contents {
+.content-default, body .App .container .user-wallet-contents .contents .tables .assets, body .App .container .user-wallet-contents .contents .tables .transactions, body .App .container .user-wallet-contents .contents .overview, body .App .container .user-wallet-contents .announcment, body .App .container .contents .result-content, body .App .container .contents .swap-contents {
   box-shadow: rgba(0, 0, 0, 0.005) 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 4px 8px, rgba(0, 0, 0, 0.02) 0px 16px 24px, rgba(0, 0, 0, 0.005) 0px 24px 32px;
   max-width: 480px;
   width: 100%;
@@ -68,7 +68,7 @@ body .App .container .contents .swap-contents .swap-inputs .origin-token .main-c
   padding: 10px 16px;
 }
 
-.swap-button-default, body .App .container .contents .swap-contents .swap-footer button.swap, body .App .container .contents .swap-contents .swap-footer button.enter-an-amount, body .App .container .contents .swap-contents .swap-footer button.connected {
+.swap-button-default, body .App .container .user-wallet-contents .announcment .content button, body .App .container .contents .swap-contents .swap-footer button.swap, body .App .container .contents .swap-contents .swap-footer button.enter-an-amount, body .App .container .contents .swap-contents .swap-footer button.connected {
   width: 100%;
   border-radius: 12px;
   padding: 16px;
@@ -567,6 +567,32 @@ body .App .container .user-wallet-contents header button {
 }
 body .App .container .user-wallet-contents header button:hover {
   background-color: #fcfcfc;
+}
+body .App .container .user-wallet-contents .announcment {
+  max-width: 1440px;
+  height: 720px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+body .App .container .user-wallet-contents .announcment .content {
+  text-align: center;
+}
+body .App .container .user-wallet-contents .announcment .content button {
+  width: auto;
+  background-color: #ffdba4;
+  margin-top: 16px;
+  color: #ff9b04;
+}
+body .App .container .user-wallet-contents .announcment .content button p {
+  font-size: 1rem;
+  text-align: center;
+}
+body .App .container .user-wallet-contents .announcment .content button:hover {
+  background-color: #fdce87;
+  color: #ff9900;
+  transition-duration: 200ms;
 }
 body .App .container .user-wallet-contents .contents .overview {
   max-width: 100%;

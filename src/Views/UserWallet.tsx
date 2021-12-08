@@ -7,8 +7,18 @@ const UserWallet = () => {
     const backToRamenSwap = () => {
         navigate("/");
     };
-
-    return (
+    return context.wallet.length === 0 ? (
+        <div className="user-wallet-contents">
+            <div className="announcment">
+                <div className="content">
+                    <h1>Please "Sign In" to the app</h1>
+                    <button onClick={backToRamenSwap}>
+                        <p>Back to the app</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    ) : (
         <div className="user-wallet-contents">
             <header>
                 <button onClick={backToRamenSwap}>
