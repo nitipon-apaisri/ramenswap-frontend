@@ -39,7 +39,7 @@ const UserWallet = () => {
                             <h4>Total Value Assets</h4>
                             <hr />
                             <div className="number">
-                                <h1>$25604</h1>
+                                <h1>-</h1>
                             </div>
                         </div>
                         <div className="display-block tha">
@@ -52,6 +52,9 @@ const UserWallet = () => {
                         <div className="display-block tva">
                             <h4>Coming Soon</h4>
                             <hr />
+                            <div className="number">
+                                <h1>-</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
