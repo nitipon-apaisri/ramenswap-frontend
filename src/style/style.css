@@ -36,7 +36,6 @@
   background-color: white;
   padding: 24px;
   margin: auto;
-  z-index: 1;
   box-sizing: border-box;
 }
 
@@ -633,7 +632,6 @@ body .App .container .user-wallet-contents .contents .overview .container .tha {
 body .App .container .user-wallet-contents .contents .tables {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   margin-top: 16px;
 }
 body .App .container .user-wallet-contents .contents .tables hr {
@@ -642,12 +640,13 @@ body .App .container .user-wallet-contents .contents .tables hr {
   border: none;
 }
 body .App .container .user-wallet-contents .contents .tables .transactions {
-  max-width: 906px;
+  max-width: 912px;
   box-sizing: border-box;
   padding: 24px;
   height: auto;
   height: 400px;
   max-height: 400px;
+  margin: 0;
 }
 body .App .container .user-wallet-contents .contents .tables .transactions p,
 body .App .container .user-wallet-contents .contents .tables .transactions h4 {
@@ -684,10 +683,11 @@ body .App .container .user-wallet-contents .contents .tables .transactions .tran
   font-family: "Roboto Mono", monospace;
 }
 body .App .container .user-wallet-contents .contents .tables .assets {
-  max-width: 450px;
+  max-width: 456px;
   box-sizing: border-box;
   padding: 24px;
   height: 400px;
+  margin: 0;
 }
 body .App .container .user-wallet-contents .contents .tables .assets p,
 body .App .container .user-wallet-contents .contents .tables .assets h4 {

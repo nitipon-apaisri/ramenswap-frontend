@@ -483,7 +483,6 @@ body {
                     .tables {
                         display: flex;
                         justify-content: space-between;
-                        align-items: flex-start;
                         margin-top: 16px;
                         hr {
                             background-color: #ededed;
@@ -492,12 +491,13 @@ body {
                         }
                         .transactions {
                             @extend .content-default;
-                            max-width: 906px;
+                            max-width: 912px;
                             box-sizing: border-box;
                             padding: 24px;
                             height: auto;
                             height: 400px;
                             max-height: 400px;
+                            margin: 0;
                             p,
                             h4 {
                                 font-weight: 500;
@@ -532,7 +532,6 @@ body {
                                         overflow: hidden;
                                         text-overflow: ellipsis;
                                         font-weight: 400;
-
                                         font-family: "Roboto Mono", monospace;
                                     }
                                 }
@@ -540,10 +539,11 @@ body {
                         }
                         .assets {
                             @extend .content-default;
-                            max-width: 450px;
+                            max-width: 456px;
                             box-sizing: border-box;
                             padding: 24px;
                             height: 400px;
+                            margin: 0;
                             p,
                             h4 {
                                 font-weight: 500;
