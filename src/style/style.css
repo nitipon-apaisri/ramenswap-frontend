@@ -649,10 +649,39 @@ body .App .container .user-wallet-contents .contents .tables .transactions {
   height: 400px;
   max-height: 400px;
 }
-body .App .container .user-wallet-contents .contents .tables .transactions .transactions-wrapper {
+body .App .container .user-wallet-contents .contents .tables .transactions p,
+body .App .container .user-wallet-contents .contents .tables .transactions h4 {
+  font-weight: 500;
+  letter-spacing: 0.05rem;
+  font-size: 0.75rem;
+}
+body .App .container .user-wallet-contents .contents .tables .transactions .table .table-head {
+  display: flex;
+  justify-content: space-between;
+}
+body .App .container .user-wallet-contents .contents .tables .transactions .table .head {
+  box-sizing: border-box;
+  width: 20%;
+  max-width: 20%;
+}
+body .App .container .user-wallet-contents .contents .tables .transactions .announcment {
   text-align: center;
   margin-top: 120px;
   color: #c2c2c2;
+}
+body .App .container .user-wallet-contents .contents .tables .transactions .transactions-wrapper .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+body .App .container .user-wallet-contents .contents .tables .transactions .transactions-wrapper .row p {
+  width: 20%;
+  max-width: 20%;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  font-family: "Roboto Mono", monospace;
 }
 body .App .container .user-wallet-contents .contents .tables .assets {
   max-width: 450px;

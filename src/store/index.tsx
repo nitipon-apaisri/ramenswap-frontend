@@ -9,6 +9,7 @@ axios.get("http://localhost:4200/assets").then((r) => {
         r.data.assets.forEach((token: object) => supportTokens.push(token));
     }
 });
+let transactions: any = [];
 type ContextProps = {
     wallet: any;
     walletIndex: any;
@@ -20,6 +21,7 @@ type ContextProps = {
     originToken: any;
     swapBlockState: any;
     signInInfo: any;
+    transactions: any;
     tokenSelectIndexInWallet: any;
     connectWalletModalState: any;
     supportTokenModalState: any;
@@ -123,6 +125,18 @@ const AppProvider = (props: any) => {
                     }
                     wallet.shift();
                     getWallet(originTokenPublicKey);
+                    axios.get("http://localhost:4200/transactions").then((r: any) => {
+                        transactions = [];
+                        r.data.transactions.find((x: any) => {
+                            wallet[0].assets.find((z: any) => {
+                                if (z.publicKey === x.sender || z.publicKey === x.receiver) {
+                                    transactions.push(x);
+                                }
+                                return 0;
+                            });
+                            return 0;
+                        });
+                    });
                 })
                 .catch((error) => {
                     console.log(error);
@@ -132,6 +146,17 @@ const AppProvider = (props: any) => {
     const signIn = (tokenPublicKey: string) => {
         if (wallet.length === 0) {
             getWallet(tokenPublicKey);
+            axios.get("http://localhost:4200/transactions").then((r: any) => {
+                r.data.transactions.find((x: any) => {
+                    wallet[0].assets.find((z: any) => {
+                        if (z.publicKey === x.sender || z.publicKey === x.receiver) {
+                            transactions.push(x);
+                        }
+                        return 0;
+                    });
+                    return 0;
+                });
+            });
         }
     };
 
@@ -173,6 +198,7 @@ const AppProvider = (props: any) => {
                 swapBlockState,
                 transaction,
                 signInInfo,
+                transactions,
                 changeWalletConnectState,
                 changeSelectToken,
                 toggleConnectWallet,

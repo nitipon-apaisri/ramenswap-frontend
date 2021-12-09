@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../store/index";
 import { useNavigate } from "react-router-dom";
 const UserWallet = () => {
     const context = useContext(AppContext);
     const navigate = useNavigate();
+    const [transactionsArr, updateTransactions]: any = useState([]);
     const backToRamenSwap = () => {
         navigate("/");
     };
+    useEffect(() => {
+        updateTransactions(context.transactions);
+    }, [context]);
     return context.wallet.length === 0 ? (
         <div className="user-wallet-contents">
             <div className="announcment">
@@ -56,10 +60,43 @@ const UserWallet = () => {
                         <div className="title">
                             <h2>Transactions</h2>
                         </div>
-
-                        <div className="transactions-wrapper">
-                            <h1>Coming Soon</h1>
-                        </div>
+                        {transactionsArr.length !== 0 ? (
+                            <div className="table">
+                                <hr />
+                                <div className="table-head">
+                                    <div className="sender head">
+                                        <h4>From</h4>
+                                    </div>
+                                    <div className="receiver head">
+                                        <h4>To</h4>
+                                    </div>
+                                    <div className="amount head">
+                                        <h4>Value</h4>
+                                    </div>
+                                    <div className="timestamp head">
+                                        <h4>Timestamp</h4>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="transactions-wrapper">
+                                    {transactionsArr.map((transaction: any, index: any) => {
+                                        return (
+                                            <div className="row" key={index}>
+                                                <p>{transaction.sender}</p>
+                                                <p>{transaction.receiver}</p>
+                                                {/*prettier-ignore*/}
+                                                <p>{transaction.amount} {transaction.currency}</p>
+                                                <p>{transaction.timeStamp}</p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="annoucement">
+                                <h1>Coming Soon</h1>
+                            </div>
+                        )}
                     </div>
                     <div className="assets">
                         <div className="title">
