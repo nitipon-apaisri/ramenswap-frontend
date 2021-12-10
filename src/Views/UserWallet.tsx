@@ -8,6 +8,13 @@ const UserWallet = () => {
     const backToRamenSwap = () => {
         navigate("/");
     };
+    let tva = 0;
+    if (context.wallet.length !== 0) {
+        for (let i = 0; i < context.wallet[0].assets.length; i++) {
+            tva += context.wallet[0].assets[i].balance * context.wallet[0].assets[i].currentPrice;
+        }
+    }
+    console.log(tva);
     useEffect(() => {
         updateTransactions(context.transactions);
     }, [context]);
@@ -39,7 +46,7 @@ const UserWallet = () => {
                             <h4>Total Value Assets</h4>
                             <hr />
                             <div className="number">
-                                <h1>-</h1>
+                                <h1>{`$${tva}`}</h1>
                             </div>
                         </div>
                         <div className="display-block tha">
