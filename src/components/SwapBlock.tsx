@@ -13,7 +13,6 @@ const Swap = () => {
     const [selectTokenState, setSelectTokenState] = useState(Boolean);
     const [tokenSelectIndexInWallet, setTokenInWalletIndex] = useState(Number);
     const [selectedTokenCurrentPrice, setSelectedTokenCurrentPrice] = useState(Number);
-
     const setOriginTokenInputState = (value: any) => {
         setOriginTokenState(Number(value));
     };

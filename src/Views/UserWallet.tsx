@@ -14,7 +14,6 @@ const UserWallet = () => {
             tva += context.wallet[0].assets[i].balance * context.wallet[0].assets[i].currentPrice;
         }
     }
-    console.log(tva);
     useEffect(() => {
         updateTransactions(context.transactions);
     }, [context]);
