@@ -102,8 +102,8 @@ const UserWallet = () => {
                                 </div>
                             </div>
                         ) : (
-                            <div className="annoucement">
-                                <h1>Coming Soon</h1>
+                            <div className="no-transaction">
+                                <h2>All transactions will show here</h2>
                             </div>
                         )}
                     </div>

@@ -67,7 +67,7 @@ const Swap = () => {
     return (
         <div className="swap-contents">
             <div className="content-header">
-                <h4>Swap</h4>
+                <h4>SWAP</h4>
             </div>
             <div className="swap-inputs">
                 <div className="origin-token">

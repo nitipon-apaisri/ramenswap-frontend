@@ -127,9 +127,10 @@ body {
                     max-width: 520px;
                     .content-header {
                         h4 {
+                            letter-spacing: 0.075rem;
                             font-weight: 500;
                         }
-                        margin-bottom: 8px;
+                        margin-bottom: 16px;
                     }
                     .swap-inputs {
                         position: relative;
@@ -515,7 +516,7 @@ body {
                                     max-width: 20%;
                                 }
                             }
-                            .announcment {
+                            .no-transaction {
                                 text-align: center;
                                 margin-top: 120px;
                                 color: #c2c2c2;

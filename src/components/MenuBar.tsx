@@ -45,7 +45,7 @@ const Menu = () => {
                     <p>Swap</p>
                 </button>
                 <button className={` ${getActiveClass(2, "active")}`} onClick={() => toggleTab(2)}>
-                    <p>Transactions</p>
+                    <p>Staking</p>
                 </button>
                 <button disabled>
                     <p>Coming Soon</p>

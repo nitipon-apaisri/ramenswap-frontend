@@ -132,7 +132,7 @@ body .App .container .contents .swap-contents .swap-inputs .origin-token .main-c
 }
 .choose-a-token button, body .App .container .contents .swap-contents .swap-inputs .destination-token button {
   border-radius: 12px;
-  padding: 10px 12px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   background-color: #ff9b04;
@@ -305,9 +305,10 @@ body .App .container .contents .swap-contents {
   max-width: 520px;
 }
 body .App .container .contents .swap-contents .content-header {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 body .App .container .contents .swap-contents .content-header h4 {
+  letter-spacing: 0.075rem;
   font-weight: 500;
 }
 body .App .container .contents .swap-contents .swap-inputs {
@@ -663,7 +664,7 @@ body .App .container .user-wallet-contents .contents .tables .transactions .tabl
   width: 20%;
   max-width: 20%;
 }
-body .App .container .user-wallet-contents .contents .tables .transactions .announcment {
+body .App .container .user-wallet-contents .contents .tables .transactions .no-transaction {
   text-align: center;
   margin-top: 120px;
   color: #c2c2c2;
